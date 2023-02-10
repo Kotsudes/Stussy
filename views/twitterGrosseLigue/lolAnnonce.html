@@ -1,0 +1,298 @@
+<!--index.html-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link rel="stylesheet" href="../../dist/style.css" type="text/css">
+    <link rel="stylesheet" href="../../dist/valorant.css" type="text/css">
+    <title>Poste Valorant</title>
+</head>
+
+<body>
+    <div class="grid grid-cols-[5fr_5fr] ml-5">
+        <div class="grid grid-cols-1">
+            <div class="my-2">
+                <a href="../../index.html">Accueil</a> / <a href="../twitterSelectionGrosseLigue.html">Selection
+                    Twitter Grosse Ligue</a>
+            </div>
+            <div>
+                <select name="jeu" id="jeu" class="w-full py-1 bg-red-800">
+                    <option value="annonceLol">Annonce Match lol</option>
+                    <option value="resultLol">Annonce résultat lol</option>
+                    <option value="annonceValo">Annonce Match valo</option>
+                    <option value="resultValo">Annonce résultat valo</option>
+                </select>
+            </div>
+            <div class="grid justify-items-center items-center mt-2 h-[85vh]">
+                <div id="wah"
+                    class="background w-[800px] h-[800px] relative bg-white overflow-hidden outline outline-black outline-[0.5px]">
+                    <spam id="structure" class="LDV">LDV</spam>
+                    <spam id="nom_equipe" class="nom_equipe">CHROME JAGUARS</spam>
+                    <span id="tournament" class="Competition">LA GROSSE LIGUE</span>
+                    <spam id="horaire" class="horaire">21H TWITCH.TV/LDVESPORT</spam>
+                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="352.525px" height="536.525px">
+                        <path fill-rule="evenodd" stroke="rgb(254, 82, 97)" stroke-width="6.35px" stroke-linecap="butt"
+                            stroke-linejoin="miter" fill="none"
+                            d="M81.481,19.706 C81.481,38.638 81.481,57.575 81.481,76.507 C81.625,76.663 81.769,76.820 81.913,76.976 C125.340,76.629 179.244,71.766 214.647,82.609 C234.814,88.786 249.997,99.423 266.530,108.428 C265.773,64.467 266.514,87.753 265.252,56.084 C286.354,38.782 301.353,31.485 342.039,8.865 C342.039,64.878 340.895,131.748 340.895,187.761 C340.899,249.329 341.344,308.561 328.357,354.408 C317.153,393.956 299.414,428.270 278.635,457.682 C269.125,469.104 259.611,480.529 250.100,491.950 C255.196,493.192 305.389,498.919 306.739,499.931 C310.918,508.849 315.098,517.770 319.277,526.688 C222.438,526.688 125.571,526.688 28.733,526.688 C32.912,517.770 37.093,508.849 41.272,499.931 C46.171,499.618 51.072,499.305 55.972,498.992 C69.703,497.145 87.390,497.715 97.910,491.481 C97.766,491.168 97.622,490.855 97.478,490.542 C79.746,477.942 65.214,452.436 53.810,432.803 C32.843,396.707 17.561,356.570 9.710,305.588 C5.963,281.255 7.548,251.486 7.548,223.907 C7.403,155.847 7.259,87.767 7.115,19.706 C31.901,19.706 56.695,19.706 81.481,19.706 ZM81.913,157.718 C81.769,181.343 81.625,204.976 81.481,228.602 C81.476,322.011 102.503,372.326 140.714,422.006 C150.122,434.238 163.134,442.346 173.572,453.457 C226.778,426.723 302.339,277.321 248.371,198.088 C215.324,149.572 158.198,157.386 81.913,157.718 Z" />
+                    </svg>
+                    <image id="flink" src="../../assets/images/Sponso/Flink.png" class="flink" />
+
+                    <div id="container_illustration" class="image">
+                        <image id="arhi_kda" src="../../assets/images/lol/arhi_kda.png" style="position: absolute;" />
+                        <image id="raph" src="../../assets/images/Autres/sad.PNG" style="position: absolute;" />
+
+                    </div>
+                </div>
+            </div>
+            <div id="resultat" hidden></div>
+        </div>
+        <div class=" grid grid-cols-1">
+            <div class="grid justify-items-center">
+                <spam>GRAN TORINO</spam>
+            </div>
+            <div class="grid grid-rows-3 justify-items-center ">
+                <div class="grid grid-cols-[5fr_3fr_2fr] items-center">
+                    <div>
+                        <label class="font-bold">Nom du tournois :</label>
+                        <input name="tournois" id="tournois" type="text" placeholder="Entrez le nom de la compétition">
+                    </div>
+                    <div>
+                        <label class="font-bold">Taille :</label>
+                        <input name="tournois_size" id="tournois_size" type="number"
+                            placeholder="Entrez la taille en px">
+                    </div>
+                    <div>
+                        <label class="font-bold">Couleur :</label>
+                        <input name="tournois_color" id="tournois_color" type="color" placeholder="Entrez la couleur">
+                    </div>
+                </div>
+                <div class="grid grid-cols-[5fr_3fr_2fr] items-center">
+                    <div>
+                        <label class="font-bold">Sous titre :</label>
+                        <input name="sous-titre" id="sous-titre" type="text" placeholder="Entrez le sous titre 1">
+                    </div>
+                    <div>
+                        <label class="font-bold">Taille :</label>
+                        <input name="sous-titre_size" id="sous-titre_size" type="number"
+                            placeholder="Entrez la taille en px">
+                    </div>
+                    <div>
+                        <label class="font-bold">Couleur :</label>
+                        <input name="sous-titre_color" id="sous-titre_color" type="color"
+                            placeholder="Entrez la couleur">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-[5fr_3fr_2fr] items-center">
+                    <div>
+                        <label class="font-bold">Sous titre 2 :</label>
+                        <input name="sous-sous-titre" id="sous-sous-titre" type="text"
+                            placeholder="Entrez le nom de l'équipe">
+                    </div>
+                    <div>
+                        <label class="font-bold">Taille :</label>
+                        <input name="sous-sous-titre_size" id="sous-sous-titre_size" type="number"
+                            placeholder="Entrez la taille en px">
+                    </div>
+                    <div>
+                        <label class="font-bold">Couleur :</label>
+                        <input name="sous-sous-titre_color" id="sous-sous-titre_color" type="color"
+                            placeholder="Entrez la couleur">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 grid-rows-2 mt-8">
+                <div class="grid grid-cols-1 justify-center">
+                    <div class="grid grid-cols-2 justify-items-center items-center">
+                        <label class="font-bold">Champions :</label>
+                        <select name="illustration" id="illustration">
+                            <option selected value="arhi_kda">KDA Arhi</option>
+                            <option selected value="raph">Raph</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 justify-items-center items-center">
+                        <label class="font-bold">Position X :</label>
+                        <input name="illustration_left" id="illustration_left" type="number"
+                            placeholder="Entrez la composante X de l'image">
+                    </div>
+                    <div class="grid grid-cols-2 justify-items-center items-center">
+                        <label class="font-bold">Position Y :</label>
+                        <input name="illustration_top" id="illustration_top" type="number"
+                            placeholder="Entrez la composante Y de l'image">
+                    </div>
+                    <div class="grid grid-cols-2 justify-items-center items-center">
+                        <label class="font-bold">Taille Longueur :</label>
+                        <input name="illustration_width" id="illustration_width" type="number"
+                            placeholder="Entrez la longueur de l'image">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 justify-items-center">
+                    <label class="font-bold">Sponsors :</label>
+                    <select multiple name="sponsors" id="sponsors" class="h-1/2">
+                        <option selected>Aucun</option>
+                        <option value="flink">Flink</option>
+                    </select>
+                </div>
+                <div class=" col-span-2 grid justify-items-center">
+                    <button class="text-4xl" id="generate">
+                        Générer
+                    </button>
+
+                    <script src="../../scripts/html2canvas.min.js" type="text/javascript"></script>
+                    <sript src="../../scripts/renduValorant.js" type="text/javascript"></sript>
+                    <script>
+                        const sponso = [
+                            "flink"
+                        ];
+                        const splashart = [
+                            "arhi_kda", "raph"
+                        ];
+                        var $ = require("jquery");
+
+                        function rgb2hex(rgb) {
+                            rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+                            return (rgb && rgb.length === 4) ? "#" +
+                                ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+                                ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+                                ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
+                        }
+
+                        // INITIALISATION DES INPUTS DU NOM DE TOURNOIS
+                        $("#tournois").val($("#tournament").text());
+                        $("#tournois_size").val($("#tournament").css("font-size").slice(0, -2));
+                        $("#tournois_color").val(rgb2hex($("#tournament").css("color")));
+
+                        // INITIALISATION DES INPUTS DE L'HORAIRE DU MATCH
+                        $("#sous-titre").val($("#horaire").text());
+                        $("#sous-titre_size").val($("#horaire").css("font-size").slice(0, -2));
+                        $("#sous-titre_color").val(rgb2hex($("#horaire").css("color")));
+
+                        // INITIALISATION DU NOM DE L'EQUIPE
+                        $("#sous-sous-titre").val($("#nom_equipe").text());
+                        $("#sous-sous-titre_size").val($("#nom_equipe").css("font-size").slice(0, -2));
+                        $("#sous-sous-titre_color").val(rgb2hex($("#nom_equipe").css("color")));
+
+                        // INITIALISATION DES INPUTS DE L'ILLUSTRATION
+                        splashart.forEach(element => {
+                            if (element == $("#illustration").val()) {
+                                $("#" + element).removeClass("hide")
+                            }
+                            else $("#" + element).addClass("hide");
+                        });
+                        $("#illustration_left").val($("#container_illustration").css("left").slice(0, -2));
+                        $("#illustration_top").val($("#container_illustration").css("top").slice(0, -2));
+                        $("#illustration_width").val("500");
+                        $("#container_illustration>img").each(function () {
+                            $(this).css("width", $("#illustration_width").val() + "px");
+                        })
+
+
+
+                        // INITIALISATION DES SPONSO
+                        sponso.forEach(element => {
+                            if (element == $("#sponsors").val()) {
+                                $("#" + element).removeClass("hide")
+                            }
+                            else $("#" + element).addClass("hide");
+                        });
+
+
+                        // MODIFICATION DES VALEURS DES INPUTS DU NOM DE TOURNOIS
+                        $("#tournois").on('input', function () {
+                            $("#tournament").text($("#tournois").val())
+                        });
+                        $("#tournois_size").on('input', function () {
+                            $("#tournament").css("font-size", $("#tournois_size").val() + "px");
+                        });
+                        $("#tournois_color").on('input', function () {
+                            $("#tournament").css("color", $("#tournois_color").val());
+                        });
+
+                        // MODIFICATION DES VALEURS DES INPUTS DE L'HORAIRE DU MATCH
+                        $("#sous-titre").on('input', function () {
+                            $("#horaire").text($("#sous-titre").val())
+                        });
+                        $("#sous-titre_size").on('input', function () {
+                            $("#horaire").css("font-size", $("#sous-titre_size").val() + "px");
+                        });
+                        $("#sous-titre_color").on('input', function () {
+                            $("#horaire").css("color", $("#sous-titre_color").val());
+                        });
+
+                        // MODIFICATION DES VALEURS DU NOM DE L'EQUIPE
+                        $("#sous-sous-titre").on('input', function () {
+                            $("#nom_equipe").text($("#sous-sous-titre").val())
+                        });
+
+                        $("#sous-sous-titre_size").on('input', function () {
+                            $("#nom_equipe").css("font-size", $("#sous-sous-titre_size").val() + "px");
+                        });
+                        $("#sous-sous-titre_color").on('input', function () {
+                            $("#nom_equipe").css("color", $("#sous-sous-titre_color").val());
+                        });
+
+                        // MODIFICATION DE L'ILLUSTRATION
+                        $("#illustration").on('change', function () {
+                            splashart.forEach(element => {
+                                if (element == $("#illustration").val()) {
+                                    $("#" + element).removeClass("hide")
+                                }
+                                else $("#" + element).addClass("hide");
+                            });
+                        });
+
+                        $("#illustration_left").on('input', function () {
+                            $("#container_illustration").css("left", $("#illustration_left").val() + "px");
+                        });
+
+                        $("#illustration_top").on('input', function () {
+                            $("#container_illustration").css("top", $("#illustration_top").val() + "px");
+                        });
+
+                        $("#illustration_width").on('input', function () {
+                            $("#container_illustration>img").each(function () {
+                                $(this).css("width", $("#illustration_width").val() + "px");
+                            })
+                        });
+
+
+
+                        // MODIFICATION DES SPONSORS
+                        $("#sponsors").on('change', function () {
+                            sponso.forEach(element => {
+                                if ($("#sponsors").val().includes(element)) {
+                                    $("#" + element).removeClass("hide")
+                                }
+                                else $("#" + element).addClass("hide");
+                            });
+                        });
+
+                    </script>
+
+                    <script>
+                        var $ = require("jquery");
+                        var htmlToImage = require('html-to-image');
+
+                        $("#generate").click(function () {
+                            htmlToImage.toPng(document.getElementById('wah'))
+                                .then(function (dataUrl) {
+                                    var link = document.createElement('a');
+                                    link.download = 'rendu.png';
+                                    link.href = dataUrl;
+                                    link.click();
+                                });
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

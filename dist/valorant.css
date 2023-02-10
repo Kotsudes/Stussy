@@ -1,0 +1,92 @@
+.logo {
+    position: absolute;
+    left: -89px;
+    top: 367px;
+}
+
+.background {
+    background-image: url('../assets/images/Autres/Formes.png')
+}
+
+.flink {
+    position: absolute;
+    left: 661px;
+    top: 23px;
+}
+
+.LDV {
+    font-size: 259.237px;
+    font-family: "Roboto";
+    color: rgb(0, 15, 71);
+    line-height: 1.2;
+    -moz-transform: matrix(0.41126938805469, 0, 0, 0.45172165350961, 0, 0);
+    -webkit-transform: matrix(0.41126938805469, 0, 0, 0.45172165350961, 0, 0);
+    -ms-transform: matrix(0.41126938805469, 0, 0, 0.45172165350961, 0, 0);
+    position: absolute;
+    left: -46.89px;
+    top: 1.731px;
+    font-weight: 900;
+    letter-spacing: 0em;
+}
+
+.Competition {
+    font-size: 34.392px;
+    font-family: "Roboto";
+    color: rgb(0, 15, 71);
+    text-transform: uppercase;
+    line-height: 2.083;
+    -moz-transform: matrix(1.39567579249655, 0, 0, 1.39567579249655, 0, 0);
+    -webkit-transform: matrix(1.39567579249655, 0, 0, 1.39567579249655, 0, 0);
+    -ms-transform: matrix(1.39567579249655, 0, 0, 1.39567579249655, 0, 0);
+    position: absolute;
+    left: 194.89px;
+    top: 195.731px;
+    font-weight: 900;
+    position: absolute;
+    text-align: left;
+    width: 500.952px;
+    letter-spacing: 0.035em;
+}
+
+
+.nom_equipe {
+    font-size: 253.76px;
+    font-family: "a Another Tag";
+    /*color: rgb(252, 105, 118);*/
+    color: #fe4e66;
+    line-height: 0.642;
+    -moz-transform: matrix(0.24703128633338, -0.04232133262042, 0.04232133262042, 0.24703128633338, 0, 0);
+    -webkit-transform: matrix(0.24703128633338, -0.04232133262042, 0.04232133262042, 0.24703128633338, 0, 0);
+    -ms-transform: matrix(0.24703128633338, -0.04232133262042, 0.04232133262042, 0.24703128633338, 0, 0);
+    position: absolute;
+    left: 62.89px;
+    top: -44.172px;
+    width: 700.576px;
+    height: 400px;
+    letter-spacing: 0.035em;
+}
+
+.horaire {
+    font-weight: bold;
+    font-size: 36px;
+    font-family: "Roboto";
+    /*color: rgb(250, 131, 142);*/
+    color: #fe4e66;
+    text-transform: uppercase;
+    line-height: 1.99;
+    position: absolute;
+    left: 96.258px;
+    top: 244.853px;
+    letter-spacing: 0.04em;
+}
+
+.image {
+    position: absolute;
+    top: 367px;
+    left: 282px;
+    width: 1000px;
+}
+
+.hide {
+    visibility: hidden;
+}
