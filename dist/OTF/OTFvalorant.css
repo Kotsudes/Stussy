@@ -1,0 +1,42 @@
+.fond {
+    background-color: rgb(1, 12, 54);
+    position: absolute;
+    left: -66px;
+    top: -3px;
+    z-index: 2;
+}
+
+.image {
+    position: absolute;
+    top: 367px;
+    left: 282px;
+    width: 1000px;
+}
+
+.Footer {
+    border-width: 1px;
+    border-color: #f3f5f8;
+    border-style: solid;
+    background-color: #f3f5f8;
+    position: absolute;
+    left: -1px;
+    bottom: 0px;
+    width: 100%;
+    height: 104.6666666667px;
+    z-index: 13;
+}
+
+.score {
+    font-size: 83.3333333333px;
+    font-family: "BilboINC";
+    color: rgb(0, 15, 71);
+    line-height: 0.072;
+    position: absolute;
+    z-index: 17;
+}
+
+.logo_equipe {
+    position: absolute;
+    height: 95px;
+    z-index: 18;
+}
