@@ -1,15 +1,13 @@
 .fond {
     background-color: rgb(1, 12, 54);
     position: absolute;
-    left: -66px;
-    top: -3px;
     z-index: 2;
 }
 
 .image {
     position: absolute;
     top: 367px;
-    left: 282px;
+    left: 100px;
     width: 1000px;
 }
 
@@ -39,4 +37,36 @@
     position: absolute;
     height: 95px;
     z-index: 18;
+}
+
+.Pseudos {
+    position: absolute;
+    top: 48px;
+    width: 100%;
+    height: fit-content;
+    z-index: 28;
+    font-size: 24px;
+    font-family: "VALORANT";
+    color: rgb(255, 255, 255);
+    line-height: 0.25;
+}
+
+.pseudo1 {
+    z-index: 27;
+}
+
+.pseudo2 {
+    z-index: 26;
+}
+
+.pseudo3 {
+    z-index: 25;
+}
+
+.pseudo4 {
+    z-index: 24;
+}
+
+.pseudo5 {
+    z-index: 23;
 }
