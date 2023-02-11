@@ -71,10 +71,17 @@
                             src="../../../assets/OTF/Valorant/Defaite/DEFEAT_SPLIT.png">
                     </div>
 
-                    <div id="container_illustration" class="image">
+                    <div id="container_illustration" class="image" style="top:250px; left:-25px;">
                         <img id="cypherkilljoy" class="absolute"
-                            src="../../../assets/OTF/Valorant/Agents/Cypher_Killjoy.png">
+                            src=" ../../../assets/OTF/Valorant/Agents/Cypher_Killjoy.png">
                         <img id="jettsova" class="absolute" src="../../../assets/OTF/Valorant/Agents/Jett_Sova.png">
+                        <img id="phoenixyoru" class="absolute"
+                            src="../../../assets/OTF/Valorant/Agents/Phoenix_Yoru.png">
+                        <img id="astrasage" class="absolute" src="../../../assets/OTF/Valorant/Agents/Astra_Sage.png">
+                        <img id="brimstoneraze" class="absolute"
+                            src="../../../assets/OTF/Valorant/Agents/Brimstone_Raze.png">
+                        <img id="reynarharbor" class="absolute"
+                            src="../../../assets/OTF/Valorant/Agents/Reynar_Harbor.png">
                     </div>
 
                     <div
@@ -92,8 +99,8 @@
 
                         <img id="logo_black" class="logo_equipe left-[98px] top-[3.6666666667px]"
                             src="../../../assets/OTF/Valorant/Autres/carreNoir.png">
-                        <img class="logo_equipe left-[98px] top-[3.6666666667px] z-50"
-                            src="../../../assets/OTF/Valorant/Autres/Barre.png">
+                        <!--<img class="logo_equipe left-[98px] top-[3.6666666667px] z-50"
+                            src="../../../assets/OTF/Valorant/Autres/Barre.png">-->
                         <div
                             class="z-50 w-[95px] h-[95px] grid justify-items-center absolute left-[98px] top-[3.6666666667px]">
                             <img id="black_ldv" class="logo_equipe h-[85px] mt-1"
@@ -134,7 +141,7 @@
                     </div>
                     <div>
                         <label class="font-bold">Carte :</label>
-                        <select name="map" id="map">"", "", "", "", "", "", ""
+                        <select name="map" id="map">
                             <option value="ascent" selected>Ascent</option>
                             <option value="fracture">Fracture</option>
                             <option value="haven">Haven</option>
@@ -182,6 +189,7 @@
                         <select name="logo1" id="logo_redInput">
                             <option selected value="ldv">LDV</option>
                             <option value="base">Base</option>
+                            <option>Aucun</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-1 justify-items-center">
@@ -189,6 +197,7 @@
                         <select name="logo2" id="logo_blackInput">
                             <option selected value="ldv">LDV</option>
                             <option value="base">Base</option>
+                            <option>Aucun</option>
                         </select>
                     </div>
 
@@ -202,6 +211,10 @@
                         <select name="illustration" id="illustration">
                             <option selected value="cypherkilljoy">Cypher et KillJoy</option>
                             <option value="jettsova">Jett et Sova</option>
+                            <option value="phoenixyoru">Phoenix et Yoru</option>
+                            <option value="astrasage">Astra et Sage</option>
+                            <option value="brimstoneraze">Brimstone et Raze</option>
+                            <option value="reynarharbor">Reynar et Harbor</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2 justify-items-center items-center">
@@ -231,7 +244,7 @@
                     <script>
 
                         const agents = [
-                            "cypherkilljoy", "jettsova"
+                            "cypherkilljoy", "jettsova", "phoenixyoru", "astrasage", "brimstoneraze", "reynarharbor"
                         ];
 
                         const logo = [
@@ -300,7 +313,7 @@
 
                         $("#illustration_left").val($("#container_illustration").css("left").slice(0, -2));
                         $("#illustration_top").val($("#container_illustration").css("top").slice(0, -2));
-                        $("#illustration_width").val("500");
+                        $("#illustration_width").val("750");
                         $("#container_illustration>img").each(function () {
                             $(this).css("width", $("#illustration_width").val() + "px");
                         })
@@ -409,8 +422,58 @@
                             agents.forEach(element => {
                                 if (element == $("#illustration").val()) {
                                     $("#" + element).removeClass("hidden")
+                                    if (element == "jettsova") {
+                                        $("#container_illustration").css("left", "-5px");
+                                        $("#illustration_left").val("-5");
+                                        $("#container_illustration").css("top", "250px");
+                                        $("#illustration_top").val("250");
+                                        $("#container_illustration").css("width", "750px");
+                                        $("#illustration_width").val("750");
+                                    }
+                                    else if ((element == "astrasage")) {
+                                        $("#container_illustration").css("left", "-25px");
+                                        $("#illustration_left").val("-25");
+                                        $("#container_illustration").css("top", "85px");
+                                        $("#illustration_top").val("85");
+                                        $("#container_illustration").css("width", "750px");
+                                        $("#illustration_width").val("750");
+                                    }
+                                    else if ((element == "brimstoneraze")) {
+                                        $("#container_illustration").css("left", "-25px");
+                                        $("#illustration_left").val("-25");
+                                        $("#container_illustration").css("top", "170px");
+                                        $("#illustration_top").val("170");
+                                        $("#container_illustration").css("width", "750px");
+                                        $("#illustration_width").val("750");
+                                    }
+                                    else if ((element == "cypherkilljoy")) {
+                                        $("#container_illustration").css("left", "-25px");
+                                        $("#illustration_left").val("-25");
+                                        $("#container_illustration").css("top", "250px");
+                                        $("#illustration_top").val("250");
+                                        $("#container_illustration").css("width", "750px");
+                                        $("#illustration_width").val("750");
+                                    }
+                                    else if ((element == "reynarharbor")) {
+                                        $("#container_illustration").css("top", "50px");
+                                        $("#illustration_top").val("50");
+                                        $("#container_illustration").css("left", "0px");
+                                        $("#illustration_left").val("0");
+                                        $("#container_illustration").css("width", "800px");
+                                        $("#illustration_width").val("800");
+                                    }
+                                    else if ((element == "phoenixyoru")) {
+                                        $("#container_illustration").css("top", "250px");
+                                        $("#illustration_top").val("250");
+                                        $("#container_illustration").css("left", "-25px");
+                                        $("#illustration_left").val("-25");
+                                        $("#container_illustration").css("width", "750px");
+                                        $("#illustration_width").val("750");
+                                    }
+
                                 }
                                 else $("#" + element).addClass("hidden");
+
                             });
                         });
 
