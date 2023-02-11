@@ -3,3 +3,4 @@ css/*
 node_modules/*
 package-lock.json
 tailwind.config.js
+build
