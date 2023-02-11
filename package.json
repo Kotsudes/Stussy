@@ -22,7 +22,7 @@
   },
   "build": {
     "appId": "ldv.twittercommunication.app",
-    "productName": "Comm Designer",
+    "productName": "Stussy comm",
     "target": "NSIS",
     "directories": {
       "output": "build"

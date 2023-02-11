@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
 
-    <link rel="stylesheet" href="../../dist/style.css" type="text/css">
-    <link rel="stylesheet" href="../../dist/valorant.css" type="text/css">
+    <link rel="stylesheet" href="../../../dist/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../dist/font.css" type="text/css">
+    <link rel="stylesheet" href="../../../dist/valorant.css" type="text/css">
     <title>Poste Valorant</title>
 </head>
 
@@ -16,7 +17,8 @@
     <div class="grid grid-cols-[5fr_5fr] ml-5">
         <div class="grid grid-cols-1">
             <div class="my-2">
-                <a href="../../index.html">Accueil</a> / <a href="../twitterSelectionCarre.html">Selection Twitter</a>
+                <a href="../../../index.html">Accueil</a> / <a href="../../twitterSelectionCarre.html">Selection
+                    Twitter</a>
             </div>
             <div>
                 <select name="jeu" id="jeu" class="w-full py-1 bg-red-800">
@@ -30,7 +32,7 @@
                 <div id="wah"
                     class="background w-[800px] h-[800px] relative bg-white overflow-hidden outline outline-black outline-[0.5px]">
                     <spam id="structure" class="LDV">LDV</spam>
-                    <spam id="nom_equipe" class="nom_equipe">Steel Rhinos</spam>
+                    <spam id="nom_equipe" class="nom_equipe">CHROME JAGUARS</spam>
                     <span id="tournament" class="Competition">LA GROSSE LIGUE</span>
                     <spam id="horaire" class="horaire">21H TWITCH.TV/LDVESPORT</spam>
                     <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -39,14 +41,13 @@
                             stroke-linejoin="miter" fill="none"
                             d="M81.481,19.706 C81.481,38.638 81.481,57.575 81.481,76.507 C81.625,76.663 81.769,76.820 81.913,76.976 C125.340,76.629 179.244,71.766 214.647,82.609 C234.814,88.786 249.997,99.423 266.530,108.428 C265.773,64.467 266.514,87.753 265.252,56.084 C286.354,38.782 301.353,31.485 342.039,8.865 C342.039,64.878 340.895,131.748 340.895,187.761 C340.899,249.329 341.344,308.561 328.357,354.408 C317.153,393.956 299.414,428.270 278.635,457.682 C269.125,469.104 259.611,480.529 250.100,491.950 C255.196,493.192 305.389,498.919 306.739,499.931 C310.918,508.849 315.098,517.770 319.277,526.688 C222.438,526.688 125.571,526.688 28.733,526.688 C32.912,517.770 37.093,508.849 41.272,499.931 C46.171,499.618 51.072,499.305 55.972,498.992 C69.703,497.145 87.390,497.715 97.910,491.481 C97.766,491.168 97.622,490.855 97.478,490.542 C79.746,477.942 65.214,452.436 53.810,432.803 C32.843,396.707 17.561,356.570 9.710,305.588 C5.963,281.255 7.548,251.486 7.548,223.907 C7.403,155.847 7.259,87.767 7.115,19.706 C31.901,19.706 56.695,19.706 81.481,19.706 ZM81.913,157.718 C81.769,181.343 81.625,204.976 81.481,228.602 C81.476,322.011 102.503,372.326 140.714,422.006 C150.122,434.238 163.134,442.346 173.572,453.457 C226.778,426.723 302.339,277.321 248.371,198.088 C215.324,149.572 158.198,157.386 81.913,157.718 Z" />
                     </svg>
-                    <image id="flink" src="../../assets/images/Sponso/Flink.png" class="flink" />
+                    <image id="flink" src="../../../assets/Carre/Sponso/Flink.png" class="flink" />
 
                     <div id="container_illustration" class="image">
-                        <image id="kayo" src="../../assets/images/valorant/Kayo.png" style="position: absolute;" />
-                        <image id="killjoy" src="../../assets/images/valorant/Killjoy.png"
+                        <image id="arhi_kda" src="../../../assets/Carre/Lol/arhi_kda.png" style="position: absolute;" />
+                        <image id="raph" src="../../../assets/Carre/Autres/easter_egg.png"
                             style="position: absolute;" />
-                        <image id="phoenix" src="../../assets/images/valorant/Phoenix.png"
-                            style="position: absolute;" />
+
                     </div>
                 </div>
             </div>
@@ -111,12 +112,10 @@
             <div class="grid grid-cols-2 grid-rows-2 mt-8">
                 <div class="grid grid-cols-1 justify-center">
                     <div class="grid grid-cols-2 justify-items-center items-center">
-                        <label class="font-bold">Agents :</label>
+                        <label class="font-bold">Champions :</label>
                         <select name="illustration" id="illustration">
-                            <option selected value="fade">Jett</option>
-                            <option value="kayo">Kayo</option>
-                            <option value="phoenix">Phoenix</option>
-                            <option value="killjoy">Killjoy</option>
+                            <option selected value="arhi_kda">KDA Arhi</option>
+                            <option selected value="raph">Raph</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2 justify-items-center items-center">
@@ -153,8 +152,8 @@
                         const sponso = [
                             "flink"
                         ];
-                        const agents = [
-                            "kayo", "killjoy", "phoenix"
+                        const splashart = [
+                            "arhi_kda", "raph"
                         ];
                         var $ = require("jquery");
 
@@ -182,7 +181,7 @@
                         $("#sous-sous-titre_color").val(rgb2hex($("#nom_equipe").css("color")));
 
                         // INITIALISATION DES INPUTS DE L'ILLUSTRATION
-                        agents.forEach(element => {
+                        splashart.forEach(element => {
                             if (element == $("#illustration").val()) {
                                 $("#" + element).removeClass("hide")
                             }
@@ -242,7 +241,7 @@
 
                         // MODIFICATION DE L'ILLUSTRATION
                         $("#illustration").on('change', function () {
-                            agents.forEach(element => {
+                            splashart.forEach(element => {
                                 if (element == $("#illustration").val()) {
                                     $("#" + element).removeClass("hide")
                                 }

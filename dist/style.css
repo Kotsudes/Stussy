@@ -594,12 +594,12 @@ video {
   margin-top: 0.5rem !important;
 }
 
-.mt-8 {
-  margin-top: 2rem !important;
-}
-
 .mt-1 {
   margin-top: 0.25rem !important;
+}
+
+.mt-8 {
+  margin-top: 2rem !important;
 }
 
 .grid {
@@ -616,26 +616,6 @@ video {
 
 .h-full {
   height: 100% !important;
-}
-
-.h-\[85vh\] {
-  height: 85vh !important;
-}
-
-.h-\[800px\] {
-  height: 800px !important;
-}
-
-.h-1\/2 {
-  height: 50% !important;
-}
-
-.h-\[810px\] {
-  height: 810px !important;
-}
-
-.h-1\/4 {
-  height: 25% !important;
 }
 
 .h-\[900px\] {
@@ -660,14 +640,6 @@ video {
 
 .w-full {
   width: 100% !important;
-}
-
-.w-\[800px\] {
-  width: 800px !important;
-}
-
-.w-\[810px\] {
-  width: 810px !important;
 }
 
 .w-\[720px\] {
@@ -706,32 +678,16 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
-.grid-cols-\[5fr_5fr\] {
-  grid-template-columns: 5fr 5fr !important;
+.grid-cols-\[4fr_6fr\] {
+  grid-template-columns: 4fr 6fr !important;
 }
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
 }
 
-.grid-cols-\[5fr_3fr_2fr\] {
-  grid-template-columns: 5fr 3fr 2fr !important;
-}
-
-.grid-cols-\[7fr_3fr\] {
-  grid-template-columns: 7fr 3fr !important;
-}
-
-.grid-cols-\[4fr_6fr\] {
-  grid-template-columns: 4fr 6fr !important;
-}
-
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-}
-
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
 }
 
 .grid-rows-2 {
@@ -767,33 +723,13 @@ video {
   border-color: rgb(243 245 248 / var(--tw-border-opacity)) !important;
 }
 
-.bg-red-800 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(153 27 27 / var(--tw-bg-opacity)) !important;
-}
-
-.bg-white {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
-}
-
-.bg-blue-600 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity)) !important;
-}
-
-.bg-yellow-300 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(253 224 71 / var(--tw-bg-opacity)) !important;
-}
-
 .bg-\[\#f3f5f8\] {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(243 245 248 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-lol {
-  background-image: url('../assets/images/league_of_legends.jpg') !important;
+  background-image: url('../assets/images/lol.jpg') !important;
 }
 
 .bg-valorant {
@@ -802,11 +738,6 @@ video {
 
 .bg-cover {
   background-size: cover !important;
-}
-
-.py-1 {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
 }
 
 .text-center {
