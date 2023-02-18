@@ -39,7 +39,7 @@
                             src="../../../assets/OTF/Lol/Autres/VICTORY.png">
                     </div>
 
-                    <div id="defaite">
+                    <div id="defaite" class="hidden">
                         <img id="v_ascent" class="absolute top-[64px] w-[677.6666666667px] left-[26px]"
                             src="../../../assets/OTF/Lol/Autres/DEFEAT.png">
                     </div>
@@ -55,14 +55,14 @@
                         <img id="cait" class="absolute" src=" ../../../assets/OTF/Lol/Champions/VICTORY_CAIT.png">
                         <img id="kaisa" class="absolute" src=" ../../../assets/OTF/Lol/Champions/VICTORY_KAISA.png">
                         <img id="lux" class="absolute" src=" ../../../assets/OTF/Lol/Champions/VICTORY_LUX.png">
-                        <img id="senna" class="absolute" src=" ../../../assets/OTF/Lol/Champions/VICTORY_SENNA  .png">
+                        <img id="senna" class="absolute" src=" ../../../assets/OTF/Lol/Champions/VICTORY_SENNA.png">
                     </div>
 
                     <div
                         class="bg-[#f3f5f8] border border-[#f3f5f8] w-[720px] h-[104.6666666667px] absolute bottom-0 outline outline-[#f3f5f8]">
 
                         <img id="logo_red" class="logo_equipe left-[5px] top-[3.6666666667px]"
-                            src="../../../assets/OTF/Valorant/Autres/carreRouge.png">
+                            src="../../../assets/OTF/Lol/Autres/carreDore.png">
                         <div
                             class="z-50 w-[95px] h-[95px] grid justify-items-center absolute left-[3px] top-[3.6666666667px]">
                             <img id="red_ldv" class="logo_equipe h-[85px] mt-1"
@@ -72,7 +72,7 @@
                         </div>
 
                         <img id="logo_black" class="logo_equipe left-[98px] top-[3.6666666667px]"
-                            src="../../../assets/OTF/Valorant/Autres/carreNoir.png">
+                            src="../../../assets/OTF/Lol/Autres/carreNoir.png">
                         <!--<img class="logo_equipe left-[98px] top-[3.6666666667px] z-50"
                             src="../../../assets/OTF/Valorant/Autres/Barre.png">-->
                         <div
@@ -83,12 +83,11 @@
                                 src="../../../assets/OTF/Valorant/Logo/logo_large.png">
                         </div>
 
-                        <spam id="score" class="score w-[150px] h-[104px] absolute top-[57px] left-[222px]">13-3</spam>
+                        <spam id="score" class="score h-[104px] absolute left-[222px]">vs vitality</spam>
 
-                        <img class="w-[246.3333333333px] absolute right-[132px] top-[24px]"
-                            src="../../../assets/OTF/Valorant/Logo/LogoValoOTF.png">
-                        <img class="w-[95.6666667px] absolute right-[11px] bottom-[25px]"
-                            src="../../../assets/OTF/Valorant/Logo/logoPoleDeVince.png">
+                        <img class="mastercard absolute" src="../../../assets/OTF/Lol/Logo/mastercard.png">
+                        <img class="pole w-[95.6666667px] absolute bottom-[25px]"
+                            src="../../../assets/OTF/Lol/Logo/logoPoleDeVince.png">
 
                     </div>
                 </div>
@@ -110,8 +109,8 @@
                         <input name="resultat" id="defaite" value="false" type="radio">
                     </div>
                     <div>
-                        <label class="font-bold">Score du match :</label>
-                        <input name="score" id="scoreInput" type="text" placeholder="Entrez le score du match">
+                        <label class="font-bold">Adversaire :</label>
+                        <input name="score" id="scoreInput" type="text" placeholder="Entrez le nom de l'adversaire">
                     </div>
                 </div>
                 <div class="grid grid-cols-5 gap-3 items-center">
@@ -169,18 +168,18 @@
                     <div class="grid grid-cols-2 justify-items-center items-center">
                         <label class="font-bold">Champions :</label>
                         <select name="illustration" id="illustration">
-                            <option selected value="aatrox">Cypher et KillJoy</option>
-                            <option value="jettsova">Jett et Sova</option>
-                            <option value="akali">Phoenix et Yoru</option>
-                            <option value="diana">Astra et Sage</option>
-                            <option value="syndra">Brimstone et Raze</option>
-                            <option value="warwick">Reynar et Harbor</option>
-                            <option value="xayah">Reynar et Harbor</option>
-                            <option value="arhi">Reynar et Harbor</option>
-                            <option value="cait">Reynar et Harbor</option>
-                            <option value="kaisa">Reynar et Harbor</option>
-                            <option value="lux">Reynar et Harbor</option>
-                            <option value="senna">Reynar et Harbor</option>
+                            <option selected value="aatrox">Aatrox</option>
+                            <option value="akali">Akali</option>
+                            <option value="diana">Diana</option>
+                            <option value="syndra">Syndra</option>
+                            <option value="warwick">Warwick</option>
+                            <option value="xayah">Xayah</option>
+
+                            <option selected value="arhi">Arhi</option>
+                            <option value="cait">Caitlyn</option>
+                            <option value="kaisa">Kaisa</option>
+                            <option value="lux">Lux</option>
+                            <option value="senna">Senna</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2 justify-items-center items-center">
@@ -233,7 +232,7 @@
                         // INITIALISATION DE L'INPUT DU SCORE
                         $("#scoreInput").val($("#score").text());
 
-                        // INITIALISATION DES INPUTS DES SCORES
+                        // INITIALISATION DES INPUTS DES JOUEURS
                         $("#joueur1Input").val($("#joueur1").text());
                         $("#joueur2Input").val($("#joueur2").text());
                         $("#joueur3Input").val($("#joueur3").text());
@@ -257,23 +256,24 @@
                             else $("#black_" + element).addClass("hidden");
                         });
 
-                        // INITIALISATION DES ILLUSTRATIONS VICTOIRE / DÉFAITE
-                        maps.forEach(element => {
-                            if (element == $("#map").val()) {
-                                $("#d_" + element).addClass("hidden");
+                        // INITIALISATION DES INPUTS DE L'ILLUSTRATION
+                        victoire.forEach(element => {
+                            if (element == $("#illustration").val()) {
+                                $("#" + element).removeClass("hidden");
                             }
                             else {
-                                $("#d_" + element).addClass("hidden");
-                                $("#v_" + element).addClass("hidden");
+                                $("#" + element).addClass("hidden");
+                                $("#" + element).addClass("hidden");
                             }
                         });
-
-                        // INITIALISATION DES INPUTS DE L'ILLUSTRATION
-                        agents.forEach(element => {
+                        defaite.forEach(element => {
                             if (element == $("#illustration").val()) {
-                                $("#" + element).removeClass("hidden")
+                                $("#" + element).removeClass("hidden");
                             }
-                            else $("#" + element).addClass("hidden");
+                            else {
+                                $("#" + element).addClass("hidden");
+                                $("#" + element).addClass("hidden");
+                            }
                         });
 
                         $("#illustration_left").val($("#container_illustration").css("left").slice(0, -2));
@@ -287,53 +287,15 @@
                         // MODIFICATION VICTOIRE DÉFAITE
                         $("input[type=radio][name=resultat]").change(function () {
                             if ($("input[type=radio][name=resultat]:checked").val() == "true") {
-                                maps.forEach(element => {
-                                    $("#d_" + element).addClass("hidden");
-                                    if (element == $("#map").val()) {
-                                        $("#v_" + element).removeClass("hidden");
-                                    }
-                                    else {
-                                        $("#v_" + element).addClass("hidden");
-                                    }
-                                });
+                                $("#victoire").removeClass("hidden");
+                                $("#defaite").addClass("hidden");
                             }
                             else {
-                                maps.forEach(element => {
-                                    if (element == $("#map").val()) {
-                                        $("#v_" + element).addClass("hidden");
-                                        $("#d_" + element).removeClass("hidden");
-                                    }
-                                    else {
-                                        $("#d_" + element).addClass("hidden");
-                                    }
-                                });
+                                $("#victoire").addClass("hidden");
+                                $("#defaite").removeClass("hidden");
                             }
                         });
 
-                        $("#map").change(function () {
-                            if ($("input[type=radio][name=resultat]:checked").val() == "true") {
-                                maps.forEach(element => {
-                                    $("#d_" + element).addClass("hidden");
-                                    if (element == $("#map").val()) {
-                                        $("#v_" + element).removeClass("hidden");
-                                    }
-                                    else {
-                                        $("#v_" + element).addClass("hidden");
-                                    }
-                                });
-                            }
-                            else {
-                                maps.forEach(element => {
-                                    if (element == $("#map").val()) {
-                                        $("#v_" + element).addClass("hidden");
-                                        $("#d_" + element).removeClass("hidden");
-                                    }
-                                    else {
-                                        $("#d_" + element).addClass("hidden");
-                                    }
-                                });
-                            }
-                        });
 
                         $("#logo_redInput").change(function () {
                             logo.forEach(element => {
@@ -382,63 +344,26 @@
                             $("#joueur5").css("font-size", ($("#joueurFontInput").val() + "px"))
                         });
 
+
                         // MODIFICATION DE L'ILLUSTRATION
                         $("#illustration").on('change', function () {
-                            agents.forEach(element => {
+                            victoire.forEach(element => {
                                 if (element == $("#illustration").val()) {
-                                    $("#" + element).removeClass("hidden")
-                                    if (element == "jettsova") {
-                                        $("#container_illustration").css("left", "-5px");
-                                        $("#illustration_left").val("-5");
-                                        $("#container_illustration").css("top", "250px");
-                                        $("#illustration_top").val("250");
-                                        $("#container_illustration").css("width", "750px");
-                                        $("#illustration_width").val("750");
-                                    }
-                                    else if ((element == "astrasage")) {
-                                        $("#container_illustration").css("left", "-25px");
-                                        $("#illustration_left").val("-25");
-                                        $("#container_illustration").css("top", "85px");
-                                        $("#illustration_top").val("85");
-                                        $("#container_illustration").css("width", "750px");
-                                        $("#illustration_width").val("750");
-                                    }
-                                    else if ((element == "brimstoneraze")) {
-                                        $("#container_illustration").css("left", "-25px");
-                                        $("#illustration_left").val("-25");
-                                        $("#container_illustration").css("top", "170px");
-                                        $("#illustration_top").val("170");
-                                        $("#container_illustration").css("width", "750px");
-                                        $("#illustration_width").val("750");
-                                    }
-                                    else if ((element == "cypherkilljoy")) {
-                                        $("#container_illustration").css("left", "-25px");
-                                        $("#illustration_left").val("-25");
-                                        $("#container_illustration").css("top", "250px");
-                                        $("#illustration_top").val("250");
-                                        $("#container_illustration").css("width", "750px");
-                                        $("#illustration_width").val("750");
-                                    }
-                                    else if ((element == "reynarharbor")) {
-                                        $("#container_illustration").css("top", "50px");
-                                        $("#illustration_top").val("50");
-                                        $("#container_illustration").css("left", "0px");
-                                        $("#illustration_left").val("0");
-                                        $("#container_illustration").css("width", "800px");
-                                        $("#illustration_width").val("800");
-                                    }
-                                    else if ((element == "phoenixyoru")) {
-                                        $("#container_illustration").css("top", "250px");
-                                        $("#illustration_top").val("250");
-                                        $("#container_illustration").css("left", "-25px");
-                                        $("#illustration_left").val("-25");
-                                        $("#container_illustration").css("width", "750px");
-                                        $("#illustration_width").val("750");
-                                    }
-
+                                    $("#" + element).removeClass("hidden");
                                 }
-                                else $("#" + element).addClass("hidden");
-
+                                else {
+                                    $("#" + element).addClass("hidden");
+                                    $("#" + element).addClass("hidden");
+                                }
+                            });
+                            defaite.forEach(element => {
+                                if (element == $("#illustration").val()) {
+                                    $("#" + element).removeClass("hidden");
+                                }
+                                else {
+                                    $("#" + element).addClass("hidden");
+                                    $("#" + element).addClass("hidden");
+                                }
                             });
                         });
 

@@ -25,12 +25,14 @@
 }
 
 .score {
-    font-size: 83.3333333333px;
-    font-family: "BilboINC";
+    font-size: 63.3333333333px;
+    font-family: "Drive Corps";
     color: rgb(0, 15, 71);
     line-height: 0.072;
     position: absolute;
     z-index: 17;
+    top: 50px;
+    width: 300px;
 }
 
 .logo_equipe {
@@ -69,4 +71,14 @@
 
 .pseudo5 {
     z-index: 23;
+}
+
+.mastercard {
+    width: 120px;
+    right: 120px;
+    top: 7px;
+}
+
+.pole {
+    right: 20px;
 }

@@ -15,17 +15,17 @@
 
 @font-face {
     font-family: "Drive Corps";
-    src: url('..assets/fonts/drivecorps.ttf');
+    src: url('../assets/fonts/drivecorps.ttf');
     font-style: normal;
 }
 
 @font-face {
     font-family: "Drive Corps";
-    src: url('..assets/fonts/drivecorpsitalic.ttf');
+    src: url('../assets/fonts/drivecorpsitalic.ttf');
     font-style: italic;
 }
 
 @font-face {
     font-family: "Outward-Block";
-    src: url('..assets/fonts/outward-block.ttf') format("ttf");
+    src: url('../assets/fonts/outward-block.ttf') format("ttf");
 }
