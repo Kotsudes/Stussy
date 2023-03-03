@@ -10,5 +10,25 @@
 
 @font-face {
     font-family: "a Another Tag";
-    src: url('../assets/fonts/aAnotherTag.ttf   ');
+    src: url('../assets/fonts/aAnotherTag.ttf');
+}
+
+@font-face {
+    font-family: "Drive Corps";
+    src: url('../assets/fonts/drivecorps.ttf');
+}
+
+@font-face {
+    font-family: "Drive Corps Italic";
+    src: url('../assets/fonts/drivecorpsitalic.ttf');
+}
+
+@font-face {
+    font-family: "Outward-Block";
+    src: url('../assets/fonts/outward-block.ttf');
+}
+
+@font-face {
+    font-family: "Glacial Indifference Regular";
+    src: url('../assets/fonts/GlacialIndifference-Regular.otf');
 }
