@@ -635,10 +635,6 @@ video {
   grid-column: span 2 / span 2 !important;
 }
 
-.col-span-5 {
-  grid-column: span 5 / span 5 !important;
-}
-
 .my-2 {
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
@@ -892,34 +888,6 @@ video {
 
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-}
-
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-}
-
-.grid-cols-\[\] {
-  grid-template-columns:  !important;
-}
-
-.grid-cols-\[0\.3fr_0\.3fr_0\.1fr_0\.3fr\] {
-  grid-template-columns: 0.3fr 0.3fr 0.1fr 0.3fr !important;
-}
-
-.grid-cols-\[3fr_3fr_1fr_3fr\] {
-  grid-template-columns: 3fr 3fr 1fr 3fr !important;
-}
-
-.grid-cols-\[2fr_3fr_1fr_3fr\] {
-  grid-template-columns: 2fr 3fr 1fr 3fr !important;
-}
-
-.grid-cols-\[2\.5fr_3\.5fr_1fr_3fr\] {
-  grid-template-columns: 2.5fr 3.5fr 1fr 3fr !important;
-}
-
-.grid-cols-\[2fr_3\.5fr_0\.5fr_4fr\] {
-  grid-template-columns: 2fr 3.5fr 0.5fr 4fr !important;
 }
 
 .grid-cols-\[2fr_3\.5fr_4fr_0\.5fr\] {
