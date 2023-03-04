@@ -1,0 +1,490 @@
+<!--index.html-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+    <link rel="stylesheet" href="../../../dist/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../dist/font.css" type="text/css">
+    <script defer src="../../../scripts/export.js"></script>
+    <script defer src="../../../scripts/Custom/addElement.js"></script>
+    <script defer src="../../../scripts/Custom/canvas.js"></script>
+    <script defer src="../../../scripts/Custom/displayParameters.js"></script>
+    <script defer src="../../../scripts/OTF/valorantResultat.js"></script>
+    <title>Poste personnalisé</title>
+</head>
+
+<body>
+    <div class="grid grid-cols-[5fr_5fr] ml-5">
+        <div class="grid grid-cols-1">
+            <div class="my-2">
+                <a href="../../../index.html">Accueil</a> / <a href="../../SelectionOTF.html">Selection OTF</a>
+            </div>
+            <div class="grid justify-items-center items-center mt-2 h-[90vh] min-h-[90%]">
+                <div id="rendu" class="background relative fond outline outline-black outline-[0.5px] overflow-hidden"
+                    style="width:720px;height:900px;">
+                    <img id="fond_noir" class="absolute" src="../../../assets/OTF/Valorant/Assets/Fond_noir.png">
+                    <img id="fond_forme" class="absolute" src="../../../assets/OTF/Valorant/Assets/Fond_formes.png">
+                    <img id="barre_blanche" class="absolute"
+                        src="../../../assets/OTF/Valorant/Assets/Barre_blanche.png">
+                    <img id="logo_gold" class="absolute"
+                        src="../../../assets/OTF/Valorant/Assets/Team_logo_holder_gold.png">
+                    <img id="logo_black" class="absolute"
+                        src="../../../assets/OTF/Valorant/Assets/Team_logo_holder_black.png">
+                    <img id="devinci" class="absolute" src="../../../assets/OTF/Valorant/Assets/Devinci.png">
+                    <img id="otf" class="absolute" src="../../../assets/OTF/Valorant/Assets/Opentour.png">
+                    <div id="pitiflan" class="absolute grid justify-items-center">
+                        <spam id="pitiflantext"
+                            style="font-family: VALORANT; font-size: 24px; color: rgb(255, 255, 255);">
+                            PITIFLAN</spam>
+                    </div>
+                    <div id="dtk" class="absolute grid justify-items-center">
+                        <spam id="dtktext" style="font-family: VALORANT; font-size: 24px; color: rgb(255, 255, 255);">
+                            DTK</spam>
+                    </div>
+                    <div id="tutur" class="absolute grid justify-items-center">
+                        <spam id="tuturtext" style="font-family: VALORANT; font-size: 24px; color: rgb(255, 255, 255);">
+                            TUTUR</spam>
+                    </div>
+                    <div id="nayzouille" class="absolute grid justify-items-center">
+                        <spam id="nayzouilletext"
+                            style="font-family: VALORANT; font-size: 24px; color: rgb(255, 255, 255);">
+                            NAYZOUILLE</spam>
+                    </div>
+                    <div id="adriex9" class="absolute grid justify-items-center">
+                        <spam id="adriex9text"
+                            style="font-family: VALORANT; font-size: 24px; color: rgb(255, 255, 255);">
+                            ADRIEX9</spam>
+                    </div>
+                    <div id="score" class="absolute grid justify-items-center"
+                        style="top: 791px; left: 220px; width: 100px;">
+                        <spam id="scoretext" style="font-family: BilboINC; color: rgb(0, 0, 0); font-size: 83px;">13-31
+                        </spam>
+                    </div>
+                    <!--<div id="resultat" class="absolute grid justify-items-center">
+                        <spam id="resultattext" class="text-transparent" style=" -webkit-text-stroke: 2px white;
+                            -webkit-font-smoothing: antialiased;
+                            -moz-osx-font-smoothing: grayscale;
+                            text-rendering: optimizeLegibility;">
+                            DEFAITE
+                        </spam>
+                    </div>-->
+
+                </div>
+            </div>
+            <div id="resultat" hidden></div>
+        </div>
+        <div class=" grid grid-cols-1 grid-rows-[0.5fr_4.7fr_3.8fr_1fr] mr-2">
+            <div class="grid grid-cols-2 justify-items-center items-start">
+                <label for="ratio">Ratio de l'image : </label>
+                <select name="ratio" id="ratio">
+                    <option value="1:1">1:1</option>
+                    <option value="4:3">4:3</option>
+                    <option value="5:4">5:4</option>
+                    <option value="5:2">5:2</option>
+                    <option value="16:9">16:9</option>
+                    <option value="21:9">21:9</option>
+                    <option value="2.39:1">2.39:1</option>
+                    <option value="4:5" selected>4:5 (Poster/Instagram)</option>
+                    <option value="1.19:1">1.19:1 (Instagram/Twitter)</option>
+                </select>
+            </div>
+
+            <div id="target" class="overflow-y-scroll max-h-[40vh] border border-1 border-black">
+                <div id="tfond_noir" class="grid grid-cols-3 justify-items-center">
+                    <spam>Fond noir</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zfond_noir"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vfond_noir" name="visible" type="radio">
+                </div>
+
+                <div id="tfond_forme" class="grid grid-cols-3 justify-items-center">
+                    <spam>Fond forme</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zfond_forme"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vfond_forme" name="visible" type="radio">
+                </div>
+
+                <div id="tbarre_blanche" class="grid grid-cols-3 justify-items-center">
+                    <spam>Barre blanche</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zbarre_blanche"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vbarre_blanche" name="visible" type="radio">
+                </div>
+
+                <div id="logo_gold" class="grid grid-cols-3 justify-items-center">
+                    <spam>Logo gold</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zlogo_gold"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vlogo_gold" name="visible" type="radio">
+                </div>
+
+                <div id="logo_black" class="grid grid-cols-3 justify-items-center">
+                    <spam>Logo noir</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zlogo_black"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vlogo_black" name="visible" type="radio">
+                </div>
+
+                <div id="devinci" class="grid grid-cols-3 justify-items-center">
+                    <spam>Devinci logo</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zdevinci"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vdevinci" name="visible" type="radio">
+                </div>
+
+                <div id="otf" class="grid grid-cols-3 justify-items-center">
+                    <spam>OTF logo</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zotf"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="votf" name="visible" type="radio">
+                </div>
+
+                <div id="tpitiflan" class="grid grid-cols-3 justify-items-center">
+                    <spam>Pitiflan</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zpitiflan"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vpitiflan" name="visible" type="radio">
+                </div>
+                <div id="tdtk" class="grid grid-cols-3 justify-items-center">
+                    <spam>DTK</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zdtk"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vdtk" name="visible" type="radio">
+                </div>
+                <div id="ttutur" class="grid grid-cols-3 justify-items-center">
+                    <spam>Tutur</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="ztutur"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vtutur" name="visible" type="radio">
+                </div>
+                <div id="tnayzouille" class="grid grid-cols-3 justify-items-center">
+                    <spam>Nayzouille</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="znayzouille"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vnayzouille" name="visible" type="radio">
+                </div>
+                <div id="tadriex9" class="grid grid-cols-3 justify-items-center">
+                    <spam>Adriex9</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zadriex9"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vadriex9" name="visible" type="radio">
+                </div>
+
+                <div id="tscore" class="grid grid-cols-3 justify-items-center">
+                    <spam>Score</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zscore"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vscore" name="visible" type="radio">
+                </div>
+
+                <!--<div id="tresultat" class="grid grid-cols-3 justify-items-center">
+                    <spam>resultat</spam>
+                    <div class="grid grid-cols-2 justify-items-center"><label>Z-index</label><input id="zresultat"
+                            type="number" placeholder="Entrez la hauteur"></div> <input class="justify-self-end mr-2"
+                        checked="" id="vresultat" name="visible" type="radio">
+                </div>-->
+
+            </div>
+
+            <div id="parameters" class="border border-1 border-black max-h-[35vh] overflow-y-scroll">
+                <div id="pfond_noir" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="fond_noirsrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="fond_noirtop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="fond_noirleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="fond_noirwidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="pfond_forme" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="fond_formesrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="fond_formetop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="fond_formeleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="fond_formewidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="pbarre_blanche" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="barre_blanchesrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp"
+                        class="border border-lg">
+                    <label>Top :</label>
+                    <input id="barre_blanchetop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="barre_blancheleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="barre_blanchewidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="plogo_gold" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="logo_goldsrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="logo_goldtop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="logo_goldleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="logo_goldwidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="plogo_black" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="logo_blacksrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="logo_blacktop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="logo_blackleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="logo_blackwidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="pdevinci" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="devincisrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="devincitop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="devincileft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="devinciwidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="potf" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Src :</label>
+                    <input id="otfsrc" type="file" accept=".jpg,.jpeg,.png,.svg,.webp" class="border border-lg">
+                    <label>Top :</label>
+                    <input id="otftop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="otfleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="otfwidth" type="number" class="border border-lg">
+                </div>
+
+                <div id="ppitiflan" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte:</label>
+                    <textarea id="pitiflantextarea" class="border border-lg"></textarea>
+                    <label>Top: </label>
+                    <input id="pitiflantop" type="number" class="border border-lg">
+                    <label>Left: </label>
+                    <input id="pitiflanleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="pitiflanwidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="pitiflansize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="pitiflanweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="pitiflanitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="pitiflancolor" type="color">
+                    <label>Police</label>
+                    <select id="pitiflanfont">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <div id="pdtk" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte:</label>
+                    <textarea id="dtktextarea" class="border border-lg"></textarea>
+                    <label>Top: </label>
+                    <input id="dtktop" type="number" class="border border-lg">
+                    <label>Left: </label>
+                    <input id="dtkleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="dtkwidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="dtksize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="dtkweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="dtkitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="dtkcolor" type="color">
+                    <label>Police</label>
+                    <select id="dtkfont">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <div id="ptutur" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte:</label>
+                    <textarea id="tuturtextarea" class="border border-lg"></textarea>
+                    <label>Top: </label>
+                    <input id="tuturtop" type="number" class="border border-lg">
+                    <label>Left: </label>
+                    <input id="tuturleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="tuturwidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="tutursize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="tuturweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="tuturitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="tuturcolor" type="color">
+                    <label>Police</label>
+                    <select id="tuturfont">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <div id="pnayzouille" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte:</label>
+                    <textarea id="nayzouilletextarea" class="border border-lg"></textarea>
+                    <label>Top: </label>
+                    <input id="nayzouilletop" type="number" class="border border-lg">
+                    <label>Left: </label>
+                    <input id="nayzouilleleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="nayzouillewidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="nayzouillesize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="nayzouilleweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="nayzouilleitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="nayzouillecolor" type="color">
+                    <label>Police</label>
+                    <select id="nayzouillefont">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <div id="padriex9" class="hidden overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte:</label>
+                    <textarea id="adriex9textarea" class="border border-lg"></textarea>
+                    <label>Top: </label>
+                    <input id="adriex9top" type="number" class="border border-lg">
+                    <label>Left: </label>
+                    <input id="adriex9left" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="adriex9width" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="adriex9size" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="adriex9weight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="adriex9italic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="adriex9color" type="color">
+                    <label>Police</label>
+                    <select id="adriex9font">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <div id="pscore" class="overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte :</label>
+                    <textarea id="scoretextarea" class="border border-lg"></textarea>
+                    <label>Top :</label>
+                    <input id="scoretop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="scoreleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="scorewidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="scoresize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="scoreweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="scoreitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="scorecolor" type="color">
+                    <label>Police</label>
+                    <select id="scorefont">
+                        <option value="a Another Tag">A Another Tag</option>
+                        <option value="BilboINC">Bilbol NC</option>
+                        <option value="Drive Corps">Drive Corps</option>
+                        <option value="Drive Corps Italic">Drive Corps Italic</option>
+                        <option value="Outward-Block">Outward Block</option>
+                        <option value="VALORANT">Valorant</option>
+                        <option value="Glacial Indifference Regular">Glacial Indifference Regular</option>
+                    </select>
+                </div>
+
+                <!-- <div id="presultat" class="overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1">
+                    <label>Texte :</label>
+                    <textarea id="resultattextarea" class="border border-lg"></textarea>
+                    <label>Top :</label>
+                    <input id="resultattop" type="number" class="border border-lg">
+                    <label>Left :</label>
+                    <input id="resultatleft" type="number" class="border border-lg">
+                    <label>Width :</label>
+                    <input id="resultatwidth" type="number" class="border border-lg">
+                    <label>Font size :</label>
+                    <input id="resultatsize" type="number" class="border border-lg">
+                    <label>Font weight :</label>
+                    <input id="resultatweight" type="number" step="100" min="100" max="900" class="border border-lg">
+                    <label>Italic :</label>
+                    <input id="resultatitalic" type="checkbox">
+                    <label>Couleur :</label>
+                    <input id="resultatcolor" type="color">
+                    <label>Map</label>
+                    <select id="resultatmap">
+                        <option value="ascent">Ascent</option>
+                        <option value="fracture">Fracture</option>
+                        <option value="haven">Haven</option>
+                        <option value="haven2">Haven 2</option>
+                        <option value="icebox">Icebox</option>
+                        <option value="lotus">Lotus</option>
+                        <option value="pearl">Pearl</option>
+                        <option value="split">Split</option>
+                    </select>
+                </div> -->
+            </div>
+
+            <div class="grid grid-cols-2 justify-items-center">
+                <button id="new" class="text-4xl self-end">
+                    Ajouter un élément
+                </button>
+                <button id="generate" class="text-4xl self-end">
+                    Générer
+                </button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
