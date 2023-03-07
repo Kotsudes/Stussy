@@ -1,6 +1,6 @@
 {
   "name": "commdesigner_electron",
-  "version": "0.5.0",
+  "version": "0.7.0-beta",
   "description": "Nyalota l'a demandé, j'ai agis",
   "main": "main.js",
   "scripts": {

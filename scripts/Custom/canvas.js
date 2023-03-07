@@ -1,5 +1,6 @@
 var $ = require("jquery");
 
+
 $("#ratio").on('change', function () {
     if ($("#ratio").val() == "1:1") {
         $("#rendu").css("width", "900px");
