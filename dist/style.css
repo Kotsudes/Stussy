@@ -914,10 +914,6 @@ video {
   grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
 }
 
-.grid-rows-1 {
-  grid-template-rows: repeat(1, minmax(0, 1fr)) !important;
-}
-
 .items-start {
   align-items: flex-start !important;
 }
@@ -944,10 +940,6 @@ video {
 
 .self-end {
   align-self: flex-end !important;
-}
-
-.self-center {
-  align-self: center !important;
 }
 
 .justify-self-end {

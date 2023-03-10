@@ -17,6 +17,7 @@ $("#new").click(function () {
 
         // IMAGE --------------------------------------------------------------------------------------------------
         if ($(this).val() == "image") {
+            // Mettre dans une div pour restreindre la max width et la max height
             $("#rendu").append("<img id='img" + id + "' class='absolute'></img>");
 
             $("#target").append("<div id='t" + id + "' class='grid grid-cols-3 justify-items-center'><spam>" + $("#nom" + id).val() + "</spam><div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + id + "' type='number' placeholder='Entrez la hauteur'></div> <input class='justify-self-end mr-2' checked id='v" + id + "' name='visible' type='radio'></div>");
