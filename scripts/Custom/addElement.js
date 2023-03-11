@@ -1,8 +1,10 @@
 var $ = require("jquery");
+import { Text } from '../Models/Text.js';
 
 let element = 0
+var objects = []
 
-$("#new").click(function () {
+$("#new").on("click", function () {
     $("#target").append("<div><div id='" + element + "' class='hidden'></div><label>Nom de l'élément : </label><input id='nom" + element + "' type='text' value='Element n°" + element + "'><select id='s" + element + "'>"
         + "<option value='none'>Sélectionnez le type :</option>"
         + "<option value='image'>Image</option>"
@@ -56,33 +58,9 @@ $("#new").click(function () {
 
         // TEXTE --------------------------------------------------------------------------------------------------
         else if ($(this).val() == "text") {
-            $("#rendu").append("<div id='spam" + id + "' class='absolute grid justify-items-center'><spam id='spam" + id + "text'>Placeholder</spam></div>");
-
-            $("#target").append("<div id='t" + id + "' class='grid grid-cols-3 justify-items-center'><spam>" + $("#nom" + id).val() + "</spam><div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + id + "' type='number' placeholder='Entrez la hauteur'></div> <input class='justify-self-end mr-2' checked id='v" + id + "' name='visible' type='radio'></div>");
-            $("#z" + id).on('change', function () {
-                $("#spam" + id).css('z-index', $("#z" + id).val());
-            });
-
-            $("#parameters").append("<div id='p" + id + "' class='overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1   '>"
-                + "<label>Texte :</label>"
-                + "<textarea id='spam" + id + "textarea' class='border border-lg'></textarea>"
-                + "<label>Top :</label>"
-                + "<input id='spam" + id + "top' type='number' class='border border-lg'>"
-                + "<label>Left :</label>"
-                + "<input id='spam" + id + "left' type='number' class='border border-lg'>"
-                + "<label>Width :</label>"
-                + "<input id='spam" + id + "width' type='number' class='border border-lg'>"
-                + "<label>Font size :</label>"
-                + "<input id='spam" + id + "size' type='number' class='border border-lg'>"
-                + "<label>Font weight :</label>"
-                + "<input id='spam" + id + "weight' type='number' step='100' min='100' max='900' class='border border-lg'>"
-                + "<label>Italic :</label>"
-                + "<input id='spam" + id + "italic' type='checkbox'>"
-                + "<label>Couleur :</label>"
-                + "<input id='spam" + id + "color' type='color'>"
-                + "<label>Police</label>"
-                + "<select id='spam" + id + "font'><option value='a Another Tag'>A Another Tag</option> <option value='BilboINC'>Bilbol NC</option> <option value='Drive Corps'>Drive Corps</option> <option value='Drive Corps Italic'>Drive Corps Italic</option> <option value='Outward-Block'>Outward Block</option> <option value='VALORANT'>Valorant</option><option value='Glacial Indifference Regular'>Glacial Indifference Regular</option></select>"
-                + "</div>");
+            objects.push(new Text($("#nom" + id).val().replace(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", []))
+            objects[id].initialisation();
+            console.log(objects[id])
             $("#spam" + id + "textarea").on('change', function () {
                 $("#spam" + id + "text").text($("#spam" + id + "textarea").val());
             })
