@@ -29,7 +29,7 @@ $("#new").on("click", function () {
 
             $("#parameters").append("<div id='p" + id + "' class='overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1   '>"
                 + "<label>Src :</label>"
-                + "<input id='img" + id + "src' type='file' accept='.jpg,.jpeg,.png,.svg,.webp' class='border border-lg'>"
+                + "<input id='img" + id + "src' type='file' accept='.jpg,.jpeg,.png,.svg,.webp,.jfif' class='border border-lg'>"
                 + "<label>Top :</label>"
                 + "<input id='img" + id + "top' type='number' class='border border-lg'>"
                 + "<label>Left :</label>"
