@@ -148,6 +148,22 @@ export class Text {
             $("#p" + this.name).append("<label>Text background :</label>"
                 + "<input id='" + this.name + "hollowsrc' value='" + this.hollowsrc + "' type='file' accept='.jpg,.jpeg,.png,.svg,.webp,.jfif'>");
         }
+        if (this.hollow != null) {
+            $("#p" + this.name).append("<label>Text Image x :</label>"
+                + "<input id='" + this.name + "imagex' type='number' value='" + this.imagex + "' class='border border-lg'>");
+        }
+        if (this.hollow != null) {
+            $("#p" + this.name).append("<label>Text Image y :</label>"
+                + "<input id='" + this.name + "imagey' type='number' value='" + this.imagey + "' class='border border-lg'>");
+        }
+        if (this.hollow != null) {
+            $("#p" + this.name).append("<label>Text Image width :</label>"
+                + "<input id='" + this.name + "imagewidth' type='number' value='" + this.imagewidth + "' class='border border-lg'>");
+        }
+        if (this.hollow != null) {
+            $("#p" + this.name).append("<label>Text Image repeat :</label>"
+                + "<input id='" + this.name + "imagerepeat' value='" + this.imagereapeat + "' type='checkbox'>");
+        }
     }
 
     changeZ(self) {
@@ -280,6 +296,31 @@ export class Text {
         reader.readAsDataURL($("#" + self.name + "hollowsrc")[0].files[0]);
     }
 
+    changeImagex(self) {
+        self.imagex = $("#" + self.name + "imagex").val();
+        $("#" + self.name + "text").css('background-position', self.imagex + "px " + self.imagey + "px");
+    }
+
+    changeImagey(self) {
+        self.imagey = $("#" + self.name + "imagey").val();
+        $("#" + self.name + "text").css('background-position', self.imagex + "px " + self.imagey + "px");
+    }
+
+    changeImagewidth(self) {
+        self.imagewidth = $("#" + self.name + "imagewidth").val();
+        $("#" + self.name + "text").css('background-size', self.imagewidth + "px");
+    }
+
+    changeImagerepeat(self) {
+        console.log($("#" + self.name + 'imagerepeat').prop("checked") == true)
+        if ($("#" + self.name + 'imagerepeat').prop("checked") == true) {
+            $("#" + self.name + "text").css('background-repeat', 'repeat');
+        }
+        else {
+            $("#" + self.name + "text").css('background-repeat', 'no-repeat');
+        }
+    }
+
     binding() {
 
         $("#z" + this.name).on('change', this.changeZ.bind(null, this));
@@ -313,5 +354,13 @@ export class Text {
         $("#" + this.name + "hollow").on('change', this.changeHollow.bind(null, this));
 
         $("#" + this.name + "hollowsrc").on('change', this.changeHollowimage.bind(null, this));
+
+        $("#" + this.name + "imagex").on('change', this.changeImagex.bind(null, this));
+
+        $("#" + this.name + "imagey").on('change', this.changeImagey.bind(null, this));
+
+        $("#" + this.name + "imagewidth").on('change', this.changeImagewidth.bind(null, this));
+
+        $("#" + this.name + "imagerepeat").on('change', this.changeImagerepeat.bind(null, this));
     }
 }
