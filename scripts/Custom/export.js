@@ -1,7 +1,16 @@
 var $ = require("jquery");
+import { objects } from './addElement.js';
+
 
 $("#export").on("click", function () {
-    $("#parameters").children().each(function () {
-        if ($(this).id.slice(1) == "")
-    });
+    var myTemplate = JSON.stringify(objects);
+
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        var file = new Blob([content], { type: contentType });
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+    }
+    download(myTemplate, 'export.json', 'text/plain');
 });

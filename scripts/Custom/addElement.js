@@ -1,8 +1,10 @@
 var $ = require("jquery");
 import { Text } from '../Models/Text.js';
+import { Image } from '../Models/Image.js'
 
 let element = 0
 var objects = []
+export { objects };
 
 $("#new").on("click", function () {
     $("#target").append("<div><div id='" + element + "' class='hidden'></div><label>Nom de l'élément : </label><input id='nom" + element + "' type='text' value='Element n°" + element + "'><select id='s" + element + "'>"
@@ -19,80 +21,14 @@ $("#new").on("click", function () {
 
         // IMAGE --------------------------------------------------------------------------------------------------
         if ($(this).val() == "image") {
-            // Mettre dans une div pour restreindre la max width et la max height
-            $("#rendu").append("<img id='img" + id + "' class='absolute'></img>");
-
-            $("#target").append("<div id='t" + id + "' class='grid grid-cols-3 justify-items-center'><spam>" + $("#nom" + id).val() + "</spam><div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + id + "' type='number' placeholder='Entrez la hauteur'></div> <input class='justify-self-end mr-2' checked id='v" + id + "' name='visible' type='radio'></div>");
-            $("#z" + id).on('change', function () {
-                $("#img" + id).css('z-index', $("#z" + id).val());
-            });
-
-            $("#parameters").append("<div id='p" + id + "' class='overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1   '>"
-                + "<label>Src :</label>"
-                + "<input id='img" + id + "src' type='file' accept='.jpg,.jpeg,.png,.svg,.webp,.jfif' class='border border-lg'>"
-                + "<label>Top :</label>"
-                + "<input id='img" + id + "top' type='number' class='border border-lg'>"
-                + "<label>Left :</label>"
-                + "<input id='img" + id + "left' type='number' class='border border-lg'>"
-                + "<label>Width :</label>"
-                + "<input id='img" + id + "width' type='number' class='border border-lg'>"
-                + "</div>");
-            $("#img" + id + "src").on('change', function () {
-                const reader = new FileReader()
-                reader.addEventListener("load", () => {
-                    $("#img" + id).attr('src', reader.result);
-                })
-                reader.readAsDataURL(this.files[0]);
-            })
-
-            $("#img" + id + "top").on('change', function () {
-                $("#img" + id).css('top', $("#img" + id + "top").val() + "px");
-            })
-            $("#img" + id + "left").on('change', function () {
-                $("#img" + id).css('left', $("#img" + id + "left").val() + "px");
-            })
-            $("#img" + id + "width").on('change', function () {
-                $("#img" + id).css('width', $("#img" + id + "width").val() + "px");
-            })
+            objects.push(new Image($("#nom" + id).val().replace(" ", "_"), "", 0, 0, 0, 600, 600, 600, false))
+            objects[id].initialisation();
         }
 
         // TEXTE --------------------------------------------------------------------------------------------------
         else if ($(this).val() == "text") {
             objects.push(new Text($("#nom" + id).val().replace(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", []))
             objects[id].initialisation();
-            console.log(objects[id])
-            $("#spam" + id + "textarea").on('change', function () {
-                $("#spam" + id + "text").text($("#spam" + id + "textarea").val());
-            })
-            $("#spam" + id + "top").on('change', function () {
-                $("#spam" + id).css('top', $("#spam" + id + "top").val() + "px");
-            })
-            $("#spam" + id + "left").on('change', function () {
-                $("#spam" + id).css('left', $("#spam" + id + "left").val() + "px");
-            })
-            $("#spam" + id + "width").on('change', function () {
-                $("#spam" + id).css('width', $("#spam" + id + "width").val() + "px");
-            })
-            $("#spam" + id + "size").on('change', function () {
-                $("#spam" + id + "text").css('font-size', $("#spam" + id + "size").val() + "px");
-            })
-            $("#spam" + id + "weight").on('change', function () {
-                $("#spam" + id + "text").css('font-weight', $("#spam" + id + "weight").val());
-            })
-            $("#spam" + id + "italic").on('change', function () {
-                if ($("#spam" + id + 'italic').prop("checked") == true) {
-                    $("#spam" + id + "text").css('font-style', 'italic');
-                }
-                else {
-                    $("#spam" + id + "text").css('font-style', 'normal');
-                }
-            })
-            $("#spam" + id + "color").on('change', function () {
-                $("#spam" + id + "text").css('color', $("#spam" + id + "color").val());
-            })
-            $("#spam" + id + "font").on('change', function () {
-                $("#spam" + id + "text").css('font-family', $("#spam" + id + "font").val());
-            })
         }
 
         // GRILLE DE TEXTE ------------------------------------------------------------------------------------------------

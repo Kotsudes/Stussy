@@ -312,7 +312,6 @@ export class Text {
     }
 
     changeImagerepeat(self) {
-        console.log($("#" + self.name + 'imagerepeat').prop("checked") == true)
         if ($("#" + self.name + 'imagerepeat').prop("checked") == true) {
             $("#" + self.name + "text").css('background-repeat', 'repeat');
         }
