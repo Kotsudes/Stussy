@@ -826,6 +826,14 @@ video {
   min-height: 90% !important;
 }
 
+.min-h-\[37vh\] {
+  min-height: 37vh !important;
+}
+
+.min-h-\[17vh\] {
+  min-height: 17vh !important;
+}
+
 .w-5\/6 {
   width: 83.333333% !important;
 }
@@ -980,6 +988,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden !important;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
 }
 
 .overflow-y-auto {

@@ -21,14 +21,14 @@ $("#new").on("click", function () {
 
         // IMAGE --------------------------------------------------------------------------------------------------
         if ($(this).val() == "image") {
-            objects.push(new Image($("#nom" + id).val().replace(" ", "_"), "", 0, 0, 0, 600, 600, 600, false))
-            objects[id].initialisation();
+            var n = objects.push(new Image($("#nom" + id).val().replace(" ", "_"), "", 0, 0, 0, 0, 0, 400, 400, 400, false))
+            objects[n - 1].initialisation();
         }
 
         // TEXTE --------------------------------------------------------------------------------------------------
         else if ($(this).val() == "text") {
-            objects.push(new Text($("#nom" + id).val().replace(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", []))
-            objects[id].initialisation();
+            var n = objects.push(new Text($("#nom" + id).val().replace(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", []))
+            objects[n - 1].initialisation();
         }
 
         // GRILLE DE TEXTE ------------------------------------------------------------------------------------------------
