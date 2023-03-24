@@ -2,6 +2,7 @@ var $ = require("jquery");
 import { Text } from '../Models/Text.js';
 import { Image } from '../Models/Image.js'
 import { Grid } from '../Models/Grid.js';
+import { Rect } from '../Models/Rect.js';
 
 let element = 0
 var objects = []
@@ -39,8 +40,8 @@ $("#new").on("click", function () {
         }
 
         else if ($(this).val() == "rect") {
-            $("#rendu").append("");
-            $(this).parent().append("");
+            var n = objects.push(new Rect($("#nom" + id).val().replace(" ", "_"), 0, 0, 0, 0, 200, 200, "#FFFFFF", "rect"))
+            objects[n - 1].initialisation();
         }
 
         $(this).parent().remove();
