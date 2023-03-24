@@ -1,7 +1,8 @@
 var $ = require("jquery");
 
 export class Image {
-    constructor(name, src = "", x = 0, y = 0, z = 0, imagex = 0, imagey = 0, width = 0, maxwidth = 400, maxheight = 400, showbox = false) {
+    constructor(name, src = "", x = 0, y = 0, z = 0, imagex = 0, imagey = 0, width = 0, maxwidth = 400, maxheight = 400, showbox = false, type = "image") {
+        this.type = type;
         this.name = name;
         this.x = x;
         this.y = y;
@@ -13,6 +14,10 @@ export class Image {
         this.maxwidth = maxwidth;
         this.maxheight = maxheight;
         this.showbox = showbox;
+    }
+
+    static from(json) {
+        return Object.assign(new Image(), json);
     }
 
     initialisation() {

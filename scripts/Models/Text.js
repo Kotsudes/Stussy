@@ -2,7 +2,8 @@ var $ = require("jquery");
 const fonts = ["a Another Tag", "BilboINC", "Drive Corps", "Drive Corps Italic", "Outward-Block", "VALORANT", "Glacial Indifference Regular"];
 
 export class Text {
-    constructor(name, text = "", x = 0, y = 0, z = 0, width = 0, height = 0, font_size = 14, font_weight = 500, font_family = "Glacial Indifference Regular", italic = false, underline = false, color = "#FFFFFF", subcolor = "#000000", subArray = [], showbox = false, hollow = false, hollowimage = null, imagex = 0, imagey = 0, imagewidth = 600, imagereapeat = false) {
+    constructor(name, text = "", x = 0, y = 0, z = 0, width = 0, height = 0, font_size = 14, font_weight = 500, font_family = "Glacial Indifference Regular", italic = false, underline = false, color = "#FFFFFF", subcolor = "#000000", subArray = [], showbox = false, hollow = false, hollowimage = null, imagex = 0, imagey = 0, imagewidth = 600, imagereapeat = false, type = "text") {
+        this.type = type;
         this.name = name;
         this.text = text;
         this.textRendu = text;
@@ -26,6 +27,10 @@ export class Text {
         this.imagey = imagey;
         this.imagewidth = imagewidth;
         this.imagereapeat = imagereapeat;
+    }
+
+    static from(json) {
+        return Object.assign(new Text(), json);
     }
 
     initialisation() {
