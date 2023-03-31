@@ -33,12 +33,12 @@ export class Grid {
     }
 
     rendu() {
-        $("#rendu").append("<div id='" + this.name + "' class='absolute grid place-items-center'></div>");
+        $("#rendu").append("<div id='" + this.name + "' class='absolute flex justify-evenly	 place-items-center'></div>");
     }
 
     target() {
         $("#target").append("<div id='t" + this.name + "' class='grid grid-cols-3 justify-items-center'><spam>" + this.name + "</spam>"
-            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' type='number' placeholder='Entrez la hauteur'>"
+            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' value='" + this.z + "' type='number' placeholder='Entrez la hauteur'>"
             + "</div> <input class='justify-self-end mr-2' checked id='v" + this.name + "' name='visible' type='radio'></div>");
     }
 
@@ -47,7 +47,7 @@ export class Grid {
 
         if (this.text != null) {
             $("#p" + this.name).append("<label>Texte :</label>"
-                + "<textarea id='" + this.name + "textarea' rows='" + this.number + "' class='border border-lg'>" + this.text + "</textarea>");
+                + "<textarea id='" + this.name + "textarea' rows='" + this.number + "' class='border border-lg'>" + this.text.join("\n") + "</textarea>");
         }
 
         if (this.number != null) {
@@ -55,14 +55,14 @@ export class Grid {
                 + "<input id='" + this.name + "number' min=0 type='number' value='" + this.number + "' class='border border-lg'>");
         }
 
-        if (this.x != null) {
+        if (this.y != null) {
             $("#p" + this.name).append("<label>Top :</label>"
-                + "<input id='" + this.name + "top' type='number' value='" + this.x + "' class='border border-lg'>");
+                + "<input id='" + this.name + "top' type='number' value='" + this.y + "' class='border border-lg'>");
         }
 
-        if (this.y != null) {
+        if (this.x != null) {
             $("#p" + this.name).append("<label>Left :</label>"
-                + "<input id='" + this.name + "left' type='number' value='" + this.y + "' class='border border-lg'>");
+                + "<input id='" + this.name + "left' type='number' value='" + this.x + "' class='border border-lg'>");
         }
 
         if (this.width != null) {
@@ -122,7 +122,8 @@ export class Grid {
     }
 
     changeZ(self) {
-        $("#" + self.name).css('z-index', $("#z" + self.name).val());
+        self.z = $("#z" + self.name).val();
+        $("#" + self.name).css('z-index', self.z);
     }
 
     changeY(self) {
@@ -198,7 +199,7 @@ export class Grid {
         $("#" + self.name).empty()
         self.text = $("#" + self.name + "textarea").val().split('\n');
         for (let i = 0; i < self.number; i++) {
-            $("#" + self.name).append("<spam>" + self.text[i] + "</spam>");
+            $("#" + self.name).append("<spam>" + self.text.split(",")[i] + "</spam>");
         }
     }
 
@@ -206,7 +207,6 @@ export class Grid {
         self.number = $("#" + self.name + "number").val();
         $("#" + self.name).empty();
         $("#" + self.name + "textarea").attr("rows", self.number);
-        $("#" + self.name).css("grid-template-columns", "repeat(" + $("#" + self.name + "number").val() + ", minmax(0, 1fr))");
 
         self.text = $("#" + self.name + "textarea").val().split('\n');
         for (let i = 0; i < self.number; i++) {
@@ -216,30 +216,43 @@ export class Grid {
 
     binding() {
         $("#z" + this.name).on('change', this.changeZ.bind(null, this));
+        $("#" + this.name).css('z-index', this.z);
 
         $("#" + this.name + "textarea").on('change', this.changeText.bind(null, this));
 
         $("#" + this.name + "number").on('change', this.changeNumber.bind(null, this));
+        $("#" + this.name + "textarea").attr("rows", this.number);
+        for (let i = 0; i < this.number; i++) {
+            $("#" + this.name).append("<spam class='text-center'>" + this.text[i] + "</spam>");
+        }
 
         $("#" + this.name + "top").on('change', this.changeY.bind(null, this));
+        $("#" + this.name).css('top', this.y + "px");
 
         $("#" + this.name + "left").on('change', this.changeX.bind(null, this));
+        $("#" + this.name).css('left', this.x + "px");
 
         $("#" + this.name + "width").on('change', this.changeWidth.bind(null, this));
+        $("#" + this.name).css('width', this.width + "px");
 
         $("#" + this.name + "height").on('change', this.changeHeight.bind(null, this));
+        $("#" + this.name).css('height', this.height + "px");
 
         $("#" + this.name + "size").on('change', this.changeSize.bind(null, this));
+        $("#" + this.name).css('font-size', this.font_size + "px");
 
         $("#" + this.name + "weight").on('change', this.changeWeight.bind(null, this));
+        $("#" + this.name).css('font-weight', this.font_weight);
 
         $("#" + this.name + "font").on('change', this.changeFont.bind(null, this));
+        $("#" + this.name).css('font-family', this.font_family);
 
         $("#" + this.name + "italic").on('change', this.changeItalic.bind(null, this));
 
         $("#" + this.name + "underline").on('change', this.changeUnderline.bind(null, this));
 
         $("#" + this.name + "color").on('change', this.changeColor.bind(null, this));
+        $("#" + this.name).css('color', this.color);
 
         $("#" + this.name + "showbox").on('change', this.changeShobox.bind(null, this));
     }

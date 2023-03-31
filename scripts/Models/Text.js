@@ -2,7 +2,7 @@ var $ = require("jquery");
 const fonts = ["a Another Tag", "BilboINC", "Drive Corps", "Drive Corps Italic", "Outward-Block", "VALORANT", "Glacial Indifference Regular"];
 
 export class Text {
-    constructor(name, text = "", x = 0, y = 0, z = 0, width = 0, height = 0, font_size = 14, font_weight = 500, font_family = "Glacial Indifference Regular", italic = false, underline = false, color = "#FFFFFF", subcolor = "#000000", subArray = [], showbox = false, hollow = false, hollowimage = null, imagex = 0, imagey = 0, imagewidth = 600, imagereapeat = false, type = "text") {
+    constructor(name, text = "", x = 0, y = 0, z = 0, width = 0, height = 0, font_size = 14, font_weight = 500, font_family = "Glacial Indifference Regular", italic = false, underline = false, color = "#FFFFFF", subcolor = "#000000", subArray = [], showbox = false, hollow = false, grayscale = false, hollowimage = null, imagex = 0, imagey = 0, imagewidth = 600, imagereapeat = false, type = "text") {
         this.type = type;
         this.name = name;
         this.text = text;
@@ -22,6 +22,7 @@ export class Text {
         this.underline = underline;
         this.showbox = showbox;
         this.hollow = hollow;
+        this.grayscale = grayscale;
         this.hollowimage = hollowimage;
         this.imagex = imagex;
         this.imagey = imagey;
@@ -55,7 +56,7 @@ export class Text {
 
     target() {
         $("#target").append("<div id='t" + this.name + "' class='grid grid-cols-3 justify-items-center'><spam>" + this.name + "</spam>"
-            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' type='number' placeholder='Entrez la hauteur'>"
+            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' value='" + this.z + "' type='number' placeholder='Entrez la hauteur'>"
             + "</div> <input class='justify-self-end mr-2' checked id='v" + this.name + "' name='visible' type='radio'></div>");
 
     }
@@ -67,13 +68,13 @@ export class Text {
             $("#p" + this.name).append("<label>Texte :</label>"
                 + "<textarea id='" + this.name + "textarea' class='border border-lg'>" + this.text + "</textarea>");
         }
-        if (this.x != null) {
-            $("#p" + this.name).append("<label>Top :</label>"
-                + "<input id='" + this.name + "top' type='number' value='" + this.x + "' class='border border-lg'>");
-        }
         if (this.y != null) {
+            $("#p" + this.name).append("<label>Top :</label>"
+                + "<input id='" + this.name + "top' type='number' value='" + this.y + "' class='border border-lg'>");
+        }
+        if (this.x != null) {
             $("#p" + this.name).append("<label>Left :</label>"
-                + "<input id='" + this.name + "left' type='number' value='" + this.y + "' class='border border-lg'>");
+                + "<input id='" + this.name + "left' type='number' value='" + this.x + "' class='border border-lg'>");
         }
         if (this.width != null) {
             $("#p" + this.name).append("<label>Width :</label>"
@@ -150,6 +151,10 @@ export class Text {
                 + "<input id='" + this.name + "hollow' value='" + this.hollow + "' type='checkbox'>");
         }
         if (this.hollow != null) {
+            $("#p" + this.name).append("<label>Grayscale :</label>"
+                + "<input id='" + this.name + "greyscale' value='" + this.greyscale + "' type='checkbox'>");
+        }
+        if (this.hollow != null) {
             $("#p" + this.name).append("<label>Text background :</label>"
                 + "<input id='" + this.name + "hollowsrc' value='" + this.hollowsrc + "' type='file' accept='.jpg,.jpeg,.png,.svg,.webp,.jfif'>");
         }
@@ -172,7 +177,8 @@ export class Text {
     }
 
     changeZ(self) {
-        $("#" + self.name).css('z-index', $("#z" + self.name).val());
+        self.z = $("#z" + self.name).val();
+        $("#" + self.name).css('z-index', self.z);
     }
 
     changeText(self) {
@@ -284,11 +290,11 @@ export class Text {
 
     changeHollow(self) {
         if ($("#" + self.name + 'hollow').prop("checked") == true) {
-            $("#" + self.name + "text").css('-webkit-text-stroke', '5px black');
+            $("#" + self.name + "text").css('-webkit-text-stroke', '3px ' + self.subcolor);
             $("#" + self.name + "text").css('color', 'transparent');
         }
         else {
-            $("#" + self.name + "text").css('-webkit-text-stroke', '0px black');
+            $("#" + self.name + "text").css('-webkit-text-stroke', '0px ' + self.subcolor);
             $("#" + self.name + "text").css('color', self.color);
         }
     }
@@ -296,9 +302,12 @@ export class Text {
     changeHollowimage(self) {
         const reader = new FileReader()
         reader.addEventListener("load", () => {
-            $("#" + self.name + "text").css('background-image', "url('" + reader.result + "')");
+            self.hollowimage = reader.result
+            $("#" + self.name + "text").css('background-image', "url('" + self.hollowimage + "')");
         })
         reader.readAsDataURL($("#" + self.name + "hollowsrc")[0].files[0]);
+        console.log($("#" + self.name + "hollowsrc")[0].files[0]);
+        $("#rendu").append("<img src='" + $("#" + self.name + "hollowsrc")[0].files[0].path + "'>")
     }
 
     changeImagex(self) {
@@ -328,28 +337,37 @@ export class Text {
     binding() {
 
         $("#z" + this.name).on('change', this.changeZ.bind(null, this));
+        $("#" + this.name).css('z-index', this.z);
 
         $("#" + this.name + "textarea").on('change', this.changeText.bind(null, this));
 
         $("#" + this.name + "top").on('change', this.changeY.bind(null, this));
+        $("#" + this.name).css('top', this.y + "px");
 
         $("#" + this.name + "left").on('change', this.changeX.bind(null, this));
+        $("#" + this.name).css('left', this.x + "px");
 
         $("#" + this.name + "width").on('change', this.changeWidth.bind(null, this));
+        $("#" + this.name).css('width', this.width + "px");
 
         $("#" + this.name + "size").on('change', this.changeSize.bind(null, this));
+        $("#" + this.name + "text").css('font-size', this.font_size + "px");
 
         $("#" + this.name + "weight").on('change', this.changeWeight.bind(null, this));
+        $("#" + this.name + "text").css('font-weight', this.font_weight);
 
         $("#" + this.name + "font").on('change', this.changeFont.bind(null, this));
+        $("#" + this.name + "text").css('font-family', this.font_family);
 
         $("#" + this.name + "italic").on('change', this.changeItalic.bind(null, this));
 
         $("#" + this.name + "underline").on('change', this.changeUnderline.bind(null, this));
 
         $("#" + this.name + "color").on('change', this.changeColor.bind(null, this));
+        $("#" + this.name + "text").css('color', this.color);
 
         $("#" + this.name + "subcolor").on('change', this.changeSubcolor.bind(null, this));
+        $("#" + this.name + "subtext").css('color', this.subcolor);
 
         $("#" + this.name + "subtext").on('change', this.changeSubcolorArray.bind(null, this));
 
@@ -358,12 +376,16 @@ export class Text {
         $("#" + this.name + "hollow").on('change', this.changeHollow.bind(null, this));
 
         $("#" + this.name + "hollowsrc").on('change', this.changeHollowimage.bind(null, this));
+        $("#" + this.name + "text").css('background-image', "url('" + this.hollowimage + "')");
 
         $("#" + this.name + "imagex").on('change', this.changeImagex.bind(null, this));
+        $("#" + this.name + "text").css('background-position', this.imagex + "px " + this.imagey + "px");
 
         $("#" + this.name + "imagey").on('change', this.changeImagey.bind(null, this));
+        $("#" + this.name + "text").css('background-position', this.imagex + "px " + this.imagey + "px");
 
         $("#" + this.name + "imagewidth").on('change', this.changeImagewidth.bind(null, this));
+        $("#" + this.name + "text").css('background-size', this.imagewidth + "px");
 
         $("#" + this.name + "imagerepeat").on('change', this.changeImagerepeat.bind(null, this));
     }

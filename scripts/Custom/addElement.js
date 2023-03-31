@@ -23,24 +23,24 @@ $("#new").on("click", function () {
 
         // IMAGE --------------------------------------------------------------------------------------------------
         if ($(this).val() == "image") {
-            var n = objects.push(new Image($("#nom" + id).val().replace(" ", "_"), "", 0, 0, 0, 0, 0, 400, 400, 400, false))
+            var n = objects.push(new Image($("#nom" + id).val().replaceAll(" ", "_"), "", 0, 0, 0, 0, 0, 400, 400, 400, false))
             objects[n - 1].initialisation();
         }
 
         // TEXTE --------------------------------------------------------------------------------------------------
         else if ($(this).val() == "text") {
-            var n = objects.push(new Text($("#nom" + id).val().replace(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", []))
+            var n = objects.push(new Text($("#nom" + id).val().replaceAll(" ", "_"), "Super test", 0, 0, 0, 0, 0, 14, 500, "Glacial Indifference Regular", false, false, "#FFFFFF", "#000000", [], false, false, false, null, 0, 0, 300, false, "text"))
             objects[n - 1].initialisation();
         }
 
         // GRILLE DE TEXTE ------------------------------------------------------------------------------------------------
         else if ($(this).val() == "grid") {
-            var n = objects.push(new Grid($("#nom" + id).val().replace(" ", "_"), [], 1, 0, 0, 0, 400, 100, 24, 400, "Glacial Indifference Regular", false, false, "#FFFFFF", false, "grid"))
+            var n = objects.push(new Grid($("#nom" + id).val().replaceAll(" ", "_"), [], 1, 0, 0, 0, 400, 100, 24, 400, "Glacial Indifference Regular", false, false, "#FFFFFF", false, "grid"))
             objects[n - 1].initialisation();
         }
 
         else if ($(this).val() == "rect") {
-            var n = objects.push(new Rect($("#nom" + id).val().replace(" ", "_"), 0, 0, 0, 0, 200, 200, "#FFFFFF", "rect"))
+            var n = objects.push(new Rect($("#nom" + id).val().replaceAll(" ", "_"), 0, 0, 0, 0, 200, 200, "#FFFFFF", "rect"))
             objects[n - 1].initialisation();
         }
 

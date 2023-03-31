@@ -1,7 +1,9 @@
 var $ = require("jquery");
 
-import { Image } from "../Models/Image.js";
-import { Text } from "../Models/Text.js";
+import { Text } from '../Models/Text.js';
+import { Image } from '../Models/Image.js'
+import { Grid } from '../Models/Grid.js';
+import { Rect } from '../Models/Rect.js';
 import { objects } from "./addElement.js"
 
 $("#import").on("click", function () {
@@ -21,6 +23,12 @@ $("#import").on("click", function () {
         reader.onload = readerEvent => {
             var content = readerEvent.target.result;
             var obj = JSON.parse(content);
+
+
+            objects
+            $("#rendu").empty();
+            $("#target").empty();
+            $("#parameters").empty();
 
             obj.forEach(element => {
                 if (element['type'] == "text") {

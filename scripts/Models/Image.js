@@ -28,12 +28,12 @@ export class Image {
     }
 
     rendu() {
-        $("#rendu").append("<div id='" + this.name + "' class='relative grid place-items-center overflow-hidden'><div id='" + this.name + "wrapper' class='relative'><img id='" + this.name + "image' class='relative'></div></div>");
+        $("#rendu").append("<div id='" + this.name + "' class='absolute grid place-items-center overflow-hidden'><div id='" + this.name + "wrapper' class='relative'><img id='" + this.name + "image' class='relative'></div></div>");
     }
 
     target() {
         $("#target").append("<div id='t" + this.name + "' class='grid grid-cols-3 justify-items-center overflow-hidden'><spam>" + this.name + "</spam>"
-            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' type='number' placeholder='Entrez la hauteur'>"
+            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' type='number' value='" + this.z + "' placeholder='Entrez la hauteur'>"
             + "</div> <input class='justify-self-end mr-2' checked id='v" + this.name + "' name='visible' type='radio'></div>");
 
     }
@@ -44,20 +44,20 @@ export class Image {
             $("#p" + this.name).append("<label>Image :</label>"
                 + "<input id='" + this.name + "src' value='" + this.src + "' type='file' accept='.jpg,.jpeg,.png,.svg,.webp,.jfif'>");
         }
-        if (this.x != null) {
-            $("#p" + this.name).append("<label>Container top :</label>"
-                + "<input id='" + this.name + "top' type='number' value='" + this.x + "' class='border border-lg'>");
-        }
         if (this.y != null) {
+            $("#p" + this.name).append("<label>Container top :</label>"
+                + "<input id='" + this.name + "top' type='number' value='" + this.y + "' class='border border-lg'>");
+        }
+        if (this.x != null) {
             $("#p" + this.name).append("<label>Container left :</label>"
-                + "<input id='" + this.name + "left' type='number' value='" + this.y + "' class='border border-lg'>");
+                + "<input id='" + this.name + "left' type='number' value='" + this.x + "' class='border border-lg'>");
         }
         if (this.imagex != null) {
             $("#p" + this.name).append("<label>Image left :</label>"
                 + "<input id='" + this.name + "imagetop' type='number' value='" + this.imagex + "' class='border border-lg'>");
         }
         if (this.imagey != null) {
-            $("#p" + this.name).append("<label>Image left :</label>"
+            $("#p" + this.name).append("<label>Image top :</label>"
                 + "<input id='" + this.name + "imageleft' type='number' value='" + this.imagey + "' class='border border-lg'>");
         }
         if (this.width != null) {
@@ -79,13 +79,15 @@ export class Image {
     }
 
     changeZ(self) {
-        $("#" + self.name).css('z-index', $("#z" + self.name).val());
+        self.z = $("#z" + self.name).val();
+        $("#" + self.name).css('z-index', self.z);
     }
 
     changeSrc(self) {
         const reader = new FileReader()
         reader.addEventListener("load", () => {
-            $("#" + self.name + "image").attr('src', reader.result);
+            self.src = reader.result;
+            $("#" + self.name + "image").attr('src', self.src);
         })
         reader.readAsDataURL($("#" + self.name + "src")[0].files[0]);
     }
@@ -135,21 +137,33 @@ export class Image {
     }
 
     binding() {
+        $("#z" + this.name).on('change', this.changeZ.bind(null, this));
+        $("#" + this.name).css('z-index', this.z);
+
         $("#" + this.name + "src").on('change', this.changeSrc.bind(null, this));
+        $("#" + this.name + "image").attr('src', this.src);
 
         $("#" + this.name + "top").on('change', this.changeY.bind(null, this));
+        $("#" + this.name).css('top', this.y + "px");
 
         $("#" + this.name + "left").on('change', this.changeX.bind(null, this));
+        $("#" + this.name).css('left', this.x + "px");
 
         $("#" + this.name + "imagetop").on('change', this.changeImagey.bind(null, this));
+        $("#" + this.name + "wrapper").css('top', this.imagey + "px");
 
         $("#" + this.name + "imageleft").on('change', this.changeImagex.bind(null, this));
+        $("#" + this.name + "wrapper").css('left', this.imagex + "px");
 
         $("#" + this.name + "width").on('change', this.changeWidth.bind(null, this));
+        $("#" + this.name + "wrapper").css('width', this.width + "px");
+        $("#" + this.name + "image").css('width', this.width + "px");
 
         $("#" + this.name + "maxwidth").on('change', this.changeMaxwidth.bind(null, this));
+        $("#" + this.name).css('width', this.maxwidth + "px");
 
         $("#" + this.name + "maxheight").on('change', this.changeMaxheigth.bind(null, this));
+        $("#" + this.name).css('height', this.maxheight + "px");
 
         $("#" + this.name + "showbox").on('change', this.changeShobox.bind(null, this));
     }

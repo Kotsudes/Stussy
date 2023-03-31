@@ -14,7 +14,7 @@ export class Rect {
     }
 
     static from(json) {
-        return Object.assign(new Grid(), json);
+        return Object.assign(new Rect(), json);
     }
 
     initialisation() {
@@ -30,21 +30,21 @@ export class Rect {
 
     target() {
         $("#target").append("<div id='t" + this.name + "' class='grid grid-cols-3 justify-items-center'><spam>" + this.name + "</spam>"
-            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' type='number' placeholder='Entrez la hauteur'>"
+            + "<div class='grid grid-cols-2 justify-items-center'><label>Z-index</label><input id='z" + this.name + "' value='" + this.z + "' type='number' placeholder='Entrez la hauteur'>"
             + "</div> <input class='justify-self-end mr-2' checked id='v" + this.name + "' name='visible' type='radio'></div>");
     }
 
     parameters() {
         $("#parameters").append("<div id='p" + this.name + "' class='overflow-y-auto grid grid-cols-2 gap-y-2 mx-2 my-1'></div>");
 
-        if (this.x != null) {
+        if (this.y != null) {
             $("#p" + this.name).append("<label>Top :</label>"
-                + "<input id='" + this.name + "top' type='number' value='" + this.x + "' class='border border-lg'>");
+                + "<input id='" + this.name + "top' type='number' value='" + this.y + "' class='border border-lg'>");
         }
 
-        if (this.y != null) {
+        if (this.x != null) {
             $("#p" + this.name).append("<label>Left :</label>"
-                + "<input id='" + this.name + "left' type='number' value='" + this.y + "' class='border border-lg'>");
+                + "<input id='" + this.name + "left' type='number' value='" + this.x + "' class='border border-lg'>");
         }
 
         if (this.rotate != null) {
@@ -69,7 +69,8 @@ export class Rect {
     }
 
     changeZ(self) {
-        $("#" + self.name).css('z-index', $("#z" + self.name).val());
+        self.z = $("#z" + self.name).val();
+        $("#" + self.name).css('z-index', self.z);
     }
 
     changeY(self) {
@@ -104,18 +105,25 @@ export class Rect {
 
     binding() {
         $("#z" + this.name).on('change', this.changeZ.bind(null, this));
+        $("#" + this.name).css('z-index', this.z);
 
         $("#" + this.name + "top").on('change', this.changeY.bind(null, this));
+        $("#" + this.name).css('top', this.y + "px");
 
         $("#" + this.name + "left").on('change', this.changeX.bind(null, this));
+        $("#" + this.name).css('left', this.x + "px");
 
         $("#" + this.name + "rotate").on('change', this.changeRotate.bind(null, this));
+        $("#" + this.name).css('transform', "rotate(" + this.rotate + "deg)");
 
         $("#" + this.name + "width").on('change', this.changeWidth.bind(null, this));
+        $("#" + this.name).css('width', this.width + "px");
 
         $("#" + this.name + "height").on('change', this.changeHeight.bind(null, this));
+        $("#" + this.name).css('height', this.height + "px");
 
         $("#" + this.name + "color").on('change', this.changeColor.bind(null, this));
+        $("#" + this.name).css('background-color', this.color);
     }
 }
 
